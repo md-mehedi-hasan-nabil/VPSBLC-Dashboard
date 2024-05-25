@@ -18,7 +18,7 @@ const links = [
     },
     {
         id: 3,
-        name: "Disbursement overview",
+        name: "Disbursement",
         icon: disbursementSvg
     },
     {

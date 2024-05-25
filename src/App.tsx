@@ -4,6 +4,7 @@ import "./App.css"
 import vpsblc from "./assets/vpsblc.svg"
 import virtual from "./assets/virtual.svg"
 import trade from "./assets/trade.svg"
+import ApexChart from "./components/ApexChart";
 
 const dashboardItems = [
   {
@@ -55,6 +56,14 @@ export default function App() {
                 </div>
               </div>)
             }
+          </div>
+
+          <div className="mt-8">
+            <h2 className="text-3xl text-[#343C6A] font-semibold">GROWTH ANALYICS</h2>
+
+            <div className="mt-2">
+              <ApexChart />
+            </div>
           </div>
         </div>
       </div>
