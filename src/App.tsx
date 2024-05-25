@@ -10,10 +10,9 @@ import UsdtWallet from "./components/UsdtWallet";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import parseCSV from "./utiles/parseCSV";
-import Loader from "./components/Loader";
 
 export default function App() {
-  const [data, setData] = useState({})
+  const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -23,7 +22,8 @@ export default function App() {
         const response = await axios.get(import.meta.env.VITE_GOOGLE_SHEETS_CSV_URL);
         const data = parseCSV(response.data);
         if (data?.length > 0) {
-          setData(data[0]);
+          // setData(data[0]);
+          setData([])
         }
         setLoading(false)
       } catch (error) {
@@ -35,19 +35,17 @@ export default function App() {
     fetchData();
   }, []);
 
+
+  console.log(data, loading)
+
   return (
     <>
       <Navbar />
       <DashboardSidebar />
       <div className="p-4 sm:ml-64">
         <div className="p-4 mt-14">
-
-          {
-            loading ? <Loader /> : <Header data={data} />
-          }
-          {
-            loading ? <Loader /> : <DashboardItems data={data} />
-          }
+          <Header />
+          <DashboardItems />
           <ApexChart />
           <Disbursement />
           <UsdtWallet />
