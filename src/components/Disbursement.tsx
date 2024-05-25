@@ -5,12 +5,12 @@ const disbursements = [
         date: "5/24/2024"
     },
     {
-        id: 1,
+        id: 2,
         title: "Amount shown",
         date: "40,689"
     },
     {
-        id: 1,
+        id: 3,
         title: "Amount shown",
         date: "40,689"
     },
@@ -18,7 +18,7 @@ const disbursements = [
 
 export default function Disbursement() {
     return (
-        <div className="mt-5">
+        <div className="mt-8">
             <h2 className="text-3xl text-[#343C6A] font-semibold">
                 DISBURSEMENT OVERVIEW
             </h2>

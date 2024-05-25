@@ -77,33 +77,6 @@ export default function Navbar() {
                                             className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-600 dark:hover:text-white"
                                             role="menuitem"
                                         >
-                                            Dashboard
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-600 dark:hover:text-white"
-                                            role="menuitem"
-                                        >
-                                            Settings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-600 dark:hover:text-white"
-                                            role="menuitem"
-                                        >
-                                            Earnings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-600 dark:hover:text-white"
-                                            role="menuitem"
-                                        >
                                             Sign out
                                         </a>
                                     </li>

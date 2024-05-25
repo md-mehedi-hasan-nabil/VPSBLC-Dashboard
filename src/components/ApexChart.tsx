@@ -42,7 +42,7 @@ const ApexChart = () => {
 
   return (
     <>
-      <div className="mt-2 overflow-hidden">
+      <div className="overflow-hidden mt-8">
         <h2 className="mt-8 text-3xl text-[#343C6A] font-semibold">GROWTH ANALYICS</h2>
         <ReactApexChart options={options} series={series} type="area" height={350} />
       </div>

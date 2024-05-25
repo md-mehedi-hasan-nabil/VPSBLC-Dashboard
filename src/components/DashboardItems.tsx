@@ -1,31 +1,35 @@
 import vpsblc from "../assets/vpsblc.svg"
 import virtual from "../assets/virtual.svg"
 import trade from "../assets/trade.svg"
+import { IDashboard } from "../types"
 
-const dashboardItems = [
-    {
-        id: 1,
-        name: "VPSBLC",
-        title: "PENDING",
-        icon: vpsblc
-    },
-    {
-        id: 2,
-        name: "Virtual Monetization",
-        title: "PENDING",
-        icon: virtual
-    },
-    {
-        id: 3,
-        name: "Trade activity",
-        title: "INACTIVE",
-        icon: trade
-    },
-]
+export default function DashboardItems({ data }: {
+    data: IDashboard
+}) {
 
-export default function DashboardItems() {
+    const dashboardItems = [
+        {
+            id: 1,
+            name: "VPSBLC",
+            title: data.VPSBLC,
+            icon: vpsblc
+        },
+        {
+            id: 2,
+            name: "Virtual Monetization",
+            title: data["Virtual Monetization"],
+            icon: virtual
+        },
+        {
+            id: 3,
+            name: "Trade activity",
+            title: data["Trade activity"],
+            icon: trade
+        },
+    ]
+
     return (
-        <div className="grid grid-cols-12 gap-8 mt-6">
+        <div className="grid grid-cols-12 gap-8 mt-8">
             {
                 dashboardItems.map(item =>
                     <div key={item.id} className="col-span-12 md:col-span-4 bg-white rounded-xl p-6">

@@ -48,10 +48,10 @@ export default function DashboardSidebar() {
                         links.map(item => <li key={item.id}>
                             <a
                                 href="#"
-                                className="flex items-center p-2 text-stone-900 rounded-lg hover:bg-stone-100 group"
+                                className="flex items-center p-2 text-[#9197B3] rounded-lg hover:bg-primary hover:text-white group"
                             >
-                                <img src={item.icon} alt={item.name} />
-                                
+                                <img className="text-[#9197B3]" src={item.icon} alt={item.name} />
+
                                 <span className="ms-3">{item.name}</span>
                             </a>
                         </li>)
