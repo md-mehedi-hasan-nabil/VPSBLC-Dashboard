@@ -21,26 +21,26 @@ export default function Header() {
   if (isLoadingClientInfo) {
     content = <Loader />
   } else if (isSuccessClientInfo) {
-      content = <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold">Welcome <span className="text-[#2464EA]">
-          {
-            isSuccessClientInfo && <>
-              {clientInfo["First Name"]}{" "}
-              {clientInfo["Last Name"]}
-            </>
-          }
-        </span>
-        </h2>
-        <div>
-          <h3 className="text-xl font-semibold">VPSBLC TX-ID:</h3>
-          <p className="text-xl text-primary">{(clientInfo as ClientInformation)["TX Code"]}</p>
-        </div>
+    content = <div id="dashboard" className="flex justify-between items-center">
+      <h2 className="text-3xl font-bold">Welcome <span className="text-[#2464EA]">
+        {
+          isSuccessClientInfo && <>
+            {clientInfo["First Name"]}{" "}
+            {clientInfo["Last Name"]}
+          </>
+        }
+      </span>
+      </h2>
+      <div>
+        <h3 className="text-xl font-semibold">VPSBLC TX-ID:</h3>
+        <p className="text-xl text-primary">{(clientInfo as ClientInformation)["TX Code"]}</p>
       </div>
-    } else {
-      content = <div className="flex justify-between items-center">
-        <h2>Something was wrong</h2>
-      </div>
-    }
+    </div>
+  } else {
+    content = <div className="flex justify-between items-center">
+      <h2>Something was wrong</h2>
+    </div>
+  }
 
   return (
     <>

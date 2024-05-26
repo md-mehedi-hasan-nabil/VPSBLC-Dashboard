@@ -1,4 +1,5 @@
 import { TbSettings2 } from "react-icons/tb";
+import avatar from "../assets/user.png"
 
 export default function Navbar() {
     return (
@@ -47,7 +48,7 @@ export default function Navbar() {
                                     <span className="sr-only">Open user menu</span>
                                     <img
                                         className="w-8 h-8 rounded-full"
-                                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                        src={avatar}
                                         alt="user photo"
                                     />
                                 </button>

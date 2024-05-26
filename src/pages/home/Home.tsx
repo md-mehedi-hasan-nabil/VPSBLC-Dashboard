@@ -1,15 +1,23 @@
 import "../../App.css"
 import DashboardSidebar from "../../components/DashboardSidebar";
 import Navbar from "../../components/Navbar";
-import ApexChart from "../../components/ApexChart";
 import Disbursement from "../../components/Disbursement";
 import DashboardItems from "../../components/DashboardItems";
 import Header from "../../components/Header";
 import Documentation from "../../components/Documentation";
 import UsdtWallet from "../../components/UsdtWallet";
-
+import CognitiveProfileChart from "../../components/ApexChart";
+import { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
+    const navigate = useNavigate();
+    const username = localStorage.getItem("username")
+
+    if (!username) {
+        navigate("/")
+    }
+    
     return (
         <>
             <Navbar />
@@ -19,12 +27,14 @@ export default function App() {
                 <div className="p-4 mt-14">
                     <Header />
                     <DashboardItems />
-                    <ApexChart />
+                    <CognitiveProfileChart />
+                    {/* <ApexChart /> */}
                     <Disbursement />
                     <UsdtWallet />
                     <Documentation />
                 </div>
             </div>
+            <Toaster />
         </>
     )
 }

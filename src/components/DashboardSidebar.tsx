@@ -4,32 +4,38 @@ import analyticsSvg from "../assets/3d-square.svg";
 import disbursementSvg from "../assets/disbursement.svg";
 import documentationSvg from "../assets/documentation.svg";
 import supportSvg from "../assets/support.svg"
+import { Link } from "react-router-dom";
 
 const links = [
     {
         id: 1,
         name: "Dashboard",
-        icon: dashboardSvg
+        icon: dashboardSvg,
+        link: "#dashboard"
     },
     {
         id: 2,
         name: "Growth analytics",
-        icon: analyticsSvg
+        icon: analyticsSvg,
+        link: "#growth-analytics"
     },
     {
         id: 3,
         name: "Disbursement",
-        icon: disbursementSvg
+        icon: disbursementSvg,
+        link: "#disbursement"
     },
     {
         id: 4,
         name: "Documentation",
-        icon: documentationSvg
+        icon: documentationSvg,
+        link: "#documentation"
     },
     {
         id: 5,
         name: "Support",
-        icon: supportSvg
+        icon: supportSvg,
+        link: "#support"
     },
 ]
 
@@ -41,13 +47,15 @@ export default function DashboardSidebar() {
             aria-label="Sidebar"
         >
             <div className="h-full px-3 pb-4 overflow-y-auto bg-white">
-                <img className="mb-8" src={logo} alt="logo" />
+                <Link to="/dashboard">
+                    <img className="mb-8" src={logo} alt="logo" />
+                </Link>
 
                 <ul className="space-y-4 font-medium">
                     {
                         links.map(item => <li key={item.id}>
                             <a
-                                href="#"
+                                href={item.link}
                                 className="flex items-center p-2 text-[#9197B3] rounded-lg hover:bg-primary hover:text-white group"
                             >
                                 <img className="text-[#9197B3]" src={item.icon} alt={item.name} />

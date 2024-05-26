@@ -60,7 +60,7 @@ export default function Disbursement() {
     };
 
     return (
-        <div className="mt-8">
+        <div id="disbursement" className="mt-8">
             <h2 className="text-3xl text-[#343C6A] font-semibold">
                 DISBURSEMENT OVERVIEW
             </h2>
