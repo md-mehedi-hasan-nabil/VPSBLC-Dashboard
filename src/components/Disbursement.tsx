@@ -25,7 +25,7 @@ export default function Disbursement() {
             <div className="grid grid-cols-12 gap-8 mt-6">
                 {
                     disbursements.map(item =>
-                        <div className="col-span-12 md:col-span-4 bg-white rounded-xl p-6">
+                        <div key={item.id} className="col-span-12 md:col-span-4 bg-white rounded-xl p-6">
                             <h3 className="text-base font-semibold text-secondary">{item.title}</h3>
                             <h2 className="text-3xl font-bold mt-8">{item.date}</h2>
                         </div>)
