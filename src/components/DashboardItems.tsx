@@ -41,7 +41,7 @@ export default function DashboardItems() {
                 {
                     id: 1,
                     name: "VPSBLC Purchase",
-                    title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Funding Status"],
+                    title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Status"],
                     icon: vpsblc as string
                 },
                 {
