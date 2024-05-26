@@ -25,7 +25,7 @@ export default function Header() {
         <h2 className="text-3xl font-bold">Welcome <span className="text-[#2464EA]">
           {
             isSuccessClientInfo && <>
-              {clientInfo["First Name"]}
+              {clientInfo["First Name"]}{" "}
               {clientInfo["Last Name"]}
             </>
           }
