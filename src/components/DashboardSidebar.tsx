@@ -1,40 +1,39 @@
 import logo from "../assets/logo.png"
-import dashboardSvg from "../assets/dashboard.svg";
-import analyticsSvg from "../assets/3d-square.svg";
-import disbursementSvg from "../assets/disbursement.svg";
-import documentationSvg from "../assets/documentation.svg";
-import supportSvg from "../assets/support.svg"
 import { Link } from "react-router-dom";
+import {  MdOutlineSpaceDashboard, MdOutlineSupportAgent } from "react-icons/md";
+import { RiMenuSearchLine } from "react-icons/ri";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { TbDeviceAnalytics } from "react-icons/tb";
 
 const links = [
     {
         id: 1,
         name: "Dashboard",
-        icon: dashboardSvg,
+        icon: <MdOutlineSpaceDashboard className="text-2xl" />,
         link: "#dashboard"
     },
     {
         id: 2,
         name: "Growth analytics",
-        icon: analyticsSvg,
+        icon: <TbDeviceAnalytics className="text-2xl" />,
         link: "#growth-analytics"
     },
     {
         id: 3,
         name: "Disbursement",
-        icon: disbursementSvg,
+        icon: <RiMenuSearchLine className="text-2xl" />,
         link: "#disbursement"
     },
     {
         id: 4,
         name: "Documentation",
-        icon: documentationSvg,
+        icon: <IoDocumentTextOutline className="text-2xl" />,
         link: "#documentation"
     },
     {
         id: 5,
         name: "Support",
-        icon: supportSvg,
+        icon: <MdOutlineSupportAgent className="text-2xl" />,
         link: "#support"
     },
 ]
@@ -56,11 +55,11 @@ export default function DashboardSidebar() {
                         links.map(item => <li key={item.id}>
                             <a
                                 href={item.link}
-                                className="flex items-center p-2 text-[#9197B3] rounded-lg hover:bg-gradient hover:text-white group"
+                                className="flex gap-2 items-center p-2 text-[#9197B3] rounded-lg hover:bg-gradient hover:text-white group"
                             >
-                                <img className="text-[#9197B3]" src={item.icon} alt={item.name} />
-
-                                <span className="ms-3">{item.name}</span>
+                                {/* <img className="text-[#9197B3]" src={item.icon} alt={item.name} /> */}
+                                {item.icon}
+                                <span>{item.name}</span>
                             </a>
                         </li>)
                     }
