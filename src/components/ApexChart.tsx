@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ApexOptions } from 'apexcharts';
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { FcCurrencyExchange } from 'react-icons/fc';
 
 interface Disbursement {
     disbursement: string;
@@ -78,7 +79,7 @@ export default function ApexChart() {
             curve: 'smooth'
         },
         title: {
-            text: 'Trade Performance',
+            text: "",
             align: 'left',
         },
         grid: {
@@ -101,10 +102,16 @@ export default function ApexChart() {
     };
 
     return (
-        <div id="growth-analytics" className='pb-8'>
+        <div id="growth-analytics" className='pb-4 pt-4'>
             <div className="overflow-hidden">
                 <h2 className="my-5 text-3xl text-[#343C6A] font-semibold">GROWTH ANALYICS</h2>
-                <ReactApexChart options={chartOptions} series={chartOptions.series} type="line" height={350} />
+                <div className='bg-white p-4 rounded-2xl'>
+                    <div className='flex items-center gap-4'>
+                        <FcCurrencyExchange className='text-2xl md:text-5xl' />
+                        <p className='text-2xl'>Trade Performance</p>
+                    </div>
+                    <ReactApexChart options={chartOptions} series={chartOptions.series} type="line" height={350} />
+                </div>
             </div>
         </div>
     );

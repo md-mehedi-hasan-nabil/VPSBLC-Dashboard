@@ -1,3 +1,4 @@
+import { FcDiploma1 } from "react-icons/fc"
 import { ClientInformation } from "../types"
 import { formatDate } from "../utils/formattedDate"
 import Loader from "./Loader"
@@ -34,8 +35,11 @@ export default function Header() {
         <p className="text-base font-semibold mt-2">Today is {formatDate(new Date())}</p>
       </h2>
       <div className="mt-5 md:mt-0">
-        <h3 className="text-xl font-semibold">VPSBLC TX-ID:</h3>
-        <p className="text-xl text-primary">{(clientInfo as ClientInformation)["TX Code"]}</p>
+        <div className="text-xl font-semibold flex text-center items-center justify-center gap-1">
+          <FcDiploma1 />
+          <p>VPSBLC TX-ID:</p>
+        </div>
+        <p className="text-2xl font-semibold text-primary mt-1">{(clientInfo as ClientInformation)["TX Code"]}</p>
       </div>
     </div>
   } else {

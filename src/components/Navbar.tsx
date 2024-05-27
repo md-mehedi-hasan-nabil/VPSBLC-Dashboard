@@ -1,5 +1,5 @@
-import { TbSettings2 } from "react-icons/tb";
 import avatar from "../assets/user.png"
+import unlock from "../assets/unlock.svg"
 
 export default function Navbar() {
     const username = localStorage.getItem("username")
@@ -11,7 +11,7 @@ export default function Navbar() {
 
     function handleSidebarMenu() {
         const aside = document.getElementById("dashboard-sidebar") as HTMLElement;
-    
+
         if (aside.classList.contains("-translate-x-full")) {
             aside.classList.remove("-translate-x-full");
             aside.classList.add("transform-none");
@@ -46,7 +46,7 @@ export default function Navbar() {
                             </svg>
                         </button>
                         <a href="/" className="flex items-center gap-2 ms-2 md:me-24 text-white">
-                            <TbSettings2 className="text-3xl" />
+                            <img className="w-10 h-10" src={unlock} alt="unlock" />
                             <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
                                 VPSBLC Dashboard
                             </span>

@@ -1,5 +1,8 @@
 import { useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react";
+import overtime from "../assets/overtime.svg"
+import moneyTransfer from "../assets/money-transfer.svg"
+import bullish from "../assets/bullish.svg"
 
 interface IDisbursementOverview {
     "Next Disbursement": string;
@@ -11,6 +14,8 @@ interface IItem {
     id: number;
     title: string;
     value: string;
+    background: string;
+    icon: string;
 }
 
 export default function Disbursement() {
@@ -35,17 +40,23 @@ export default function Disbursement() {
                 {
                     id: 1,
                     title: "Next Disbursement",
-                    value: (disbursementOverview as IDisbursementOverview)["Next Disbursement"]
+                    value: (disbursementOverview as IDisbursementOverview)["Next Disbursement"],
+                    background: "#2ca07a",
+                    icon: overtime
                 },
                 {
                     id: 2,
                     title: "Next Disbursement Amount",
-                    value: (disbursementOverview as IDisbursementOverview)["Next Disbursement Amount"]
+                    value: (disbursementOverview as IDisbursementOverview)["Next Disbursement Amount"],
+                    background: "#3c3d3d",
+                    icon: moneyTransfer
                 },
                 {
                     id: 3,
                     title: "Earnings to Date",
-                    value: (disbursementOverview as IDisbursementOverview)["Earnings to Date"]
+                    value: (disbursementOverview as IDisbursementOverview)["Earnings to Date"],
+                    background: "#ebbf2c",
+                    icon: bullish
                 },
             ]
 
@@ -67,9 +78,14 @@ export default function Disbursement() {
             <div className="grid grid-cols-12 md:gap-8 mt-6">
                 {
                     disbursements && disbursements.map(item =>
-                        <div key={item.id} className="col-span-12 md:col-span-4 bg-white rounded-xl p-6 my-2 md:my-0">
-                            <h3 className="text-base font-semibold text-secondary">{item.title}</h3>
-                            <h2 className="text-3xl font-bold mt-8">{removeQuotes(item.value)}</h2>
+                        <div style={{
+                            background: item.background
+                        }} key={item.id} className="col-span-12 md:col-span-4 rounded-2xl p-6 my-2 md:my-0 text-white">
+                            <div className="flex items-center gap-2">
+                                <img src={item.icon} alt={item.title} />
+                                <h3 className="text-base font-semibold">{item.title}</h3>
+                            </div>
+                            <h2 className="text-3xl font-bold mt-5">{removeQuotes(item.value)}</h2>
                         </div>
                     )
                 }

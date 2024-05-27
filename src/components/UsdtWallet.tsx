@@ -1,8 +1,8 @@
-import { CiCircleCheck } from "react-icons/ci"
 import wallet from "../assets/wallet.svg"
 import { useQuery } from "@tanstack/react-query"
 import { ClientInformation } from "../types"
 import { IoClose } from "react-icons/io5"
+import { FcDisclaimer, FcOk } from "react-icons/fc"
 
 export default function UsdtWallet() {
     const { data: clientInfo, isSuccess } = useQuery({
@@ -23,7 +23,7 @@ export default function UsdtWallet() {
     if (isSuccess) {
         const data = clientInfo as ClientInformation
         if (data["ERC20 Wallet Address VERIFIED?"] == "Yes" || data["ERC20 Wallet Address VERIFIED?"] == "Y") {
-            icon = <CiCircleCheck className="text-green-600 text-5xl" />
+            icon = <FcOk className="text-5xl" />
         } else {
             icon = <IoClose className="text-red-600 text-5xl" />
         }
@@ -43,6 +43,14 @@ export default function UsdtWallet() {
                     </div>
                     {icon}
                 </div>
+            </div>
+
+            <div className="flex gap-2 mt-6">
+                <div>
+                    <FcDisclaimer className="text-5xl" />
+                </div>
+                <p className="text-xl text-[#343C6A]"><span className="text-[#F44336] font-bold">WARNING:</span>
+                    Please ensure that the USDT-ETH wallet address above has been verified and is RWA to receive USDT ERC20 tokens. Sending crypto to the incorrect address will result in a <span className="font-bold">loss of funds.</span></p>
             </div>
         </div>
     )
