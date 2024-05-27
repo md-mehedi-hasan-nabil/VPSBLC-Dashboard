@@ -17,7 +17,12 @@ export default {
       primary: "#2464EA",
       secondary: "#202224",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "gradient":
+          "linear-gradient(90deg, #252990 17.78%, #295CC1 50.39%, #252990 82.22%)",
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };

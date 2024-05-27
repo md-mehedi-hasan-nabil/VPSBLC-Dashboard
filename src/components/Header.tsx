@@ -1,4 +1,5 @@
 import { ClientInformation } from "../types"
+import { formatDate } from "../utils/formattedDate"
 import Loader from "./Loader"
 import { useQuery } from "@tanstack/react-query"
 
@@ -30,6 +31,7 @@ export default function Header() {
           </>
         }
       </span>
+        <p className="text-base font-semibold mt-2">Today is {formatDate(new Date())}</p>
       </h2>
       <div className="mt-5 md:mt-0">
         <h3 className="text-xl font-semibold">VPSBLC TX-ID:</h3>

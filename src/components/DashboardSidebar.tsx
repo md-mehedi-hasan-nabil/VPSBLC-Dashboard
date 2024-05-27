@@ -56,7 +56,7 @@ export default function DashboardSidebar() {
                         links.map(item => <li key={item.id}>
                             <a
                                 href={item.link}
-                                className="flex items-center p-2 text-[#9197B3] rounded-lg hover:bg-primary hover:text-white group"
+                                className="flex items-center p-2 text-[#9197B3] rounded-lg hover:bg-gradient hover:text-white group"
                             >
                                 <img className="text-[#9197B3]" src={item.icon} alt={item.name} />
 

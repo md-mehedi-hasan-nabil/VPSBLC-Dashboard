@@ -22,7 +22,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="fixed top-0 z-50 w-full bg-white border-b border-stone-200">
+        <nav className="fixed top-0 z-50 w-full bg-gradient border-b border-stone-200">
             <div className="px-3 py-4 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start rtl:justify-end">
@@ -45,9 +45,9 @@ export default function Navbar() {
                                 />
                             </svg>
                         </button>
-                        <a href="/" className="flex items-center gap-2 ms-2 md:me-24">
+                        <a href="/" className="flex items-center gap-2 ms-2 md:me-24 text-white">
                             <TbSettings2 className="text-3xl" />
-                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
                                 VPSBLC Dashboard
                             </span>
                         </a>
