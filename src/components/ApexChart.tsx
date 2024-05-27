@@ -35,16 +35,18 @@ export default function ApexChart() {
             const xCategoriesValues: string[] = []
 
             disbursementInfo.forEach((item: Disbursement) => {
-                values.push(item.disbursements_expected)
+                values.push(Number(item.disbursements_expected))
                 xCategoriesValues.push(item.disbursement)
             })
 
-            setData(values)
+            const total = values.reduce((sum, value) => sum + value, 0);
+            const percentages = values.map(value => Math.floor((value / total) * 100) * 5);
+
+            setData(percentages)
             setXCategories(xCategoriesValues)
 
         }
     }, [isSuccess, disbursementInfo])
-
 
     const chartOptions: ApexOptions = {
         series: [
@@ -97,7 +99,17 @@ export default function ApexChart() {
         },
         yaxis: {
             min: 20,
-            max: Math.max(...data)
+            max: 100,
+            tickAmount: 20,
+            labels: {
+                formatter: (value: number) => {
+                    if (value === 20 || value === 40 || value === 60 || value === 80 || value === 100) {
+                        return value.toString();
+                    } else {
+                        return '';
+                    }
+                }
+            }
         },
     };
 
