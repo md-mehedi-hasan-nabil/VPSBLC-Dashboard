@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import { FcTodoList } from "react-icons/fc";
 
 interface RecentDisbursement {
     most_recent_disbursement: string;
@@ -50,7 +51,10 @@ export default function RecentDisbursements() {
 
     return (
         <div className="col-span-12 lg:col-span-5 bg-white rounded-xl">
-            <h2 className="text-base font-semibold mb-6 pt-4 pl-4">Recent Disbursements :</h2>
+            <div className="flex items-center gap-2 mb-6 pt-4 pl-4">
+                <FcTodoList className="text-lg" />
+                <h2 className="text-base font-semibold">Recent Disbursements :</h2>
+            </div>
 
             <div className="relative overflow-x-auto">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500">

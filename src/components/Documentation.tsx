@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
-import { useEffect, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { ClientInformation } from "../types";
 import RecentDisbursements from "./RecentDisbursements";
+import { FcElectronics, FcFinePrint } from "react-icons/fc";
 
 interface Item {
     id: number;
     name: string;
     link: string;
+    icon: ReactNode
 }
 
 export default function Documentation() {
@@ -26,21 +28,24 @@ export default function Documentation() {
 
     useEffect(() => {
         if (isSuccess) {
-            const data = [
+            const data: Item[] = [
                 {
                     id: 1,
-                    name: "SPA",
-                    link: (clientInfo as ClientInformation)["Sales & Purchase Agreement"]
+                    name: "VPSBLC Sales & Purchase Agreement",
+                    link: (clientInfo as ClientInformation)["Sales & Purchase Agreement"],
+                    icon: <FcFinePrint className="text-7xl" />
                 },
                 {
                     id: 2,
-                    name: "MOU",
-                    link: (clientInfo as ClientInformation)["Memorandum of Understanding"]
+                    name: "VPSBLC Memorandum of Understanding",
+                    link: (clientInfo as ClientInformation)["Memorandum of Understanding"],
+                    icon: <FcFinePrint className="text-7xl" />
                 },
                 {
                     id: 3,
                     name: "VPSBLC NFT",
-                    link: (clientInfo as ClientInformation)["VPSBLC NFT"]
+                    link: (clientInfo as ClientInformation)["VPSBLC NFT"],
+                    icon: <FcElectronics className="text-7xl" />
                 }
             ]
 
@@ -57,15 +62,19 @@ export default function Documentation() {
             <div className="grid grid-cols-12 gap-6 mt-8">
                 <div className="col-span-12 lg:col-span-7 grid grid-cols-12 gap-6">
                     {
-                        documentationInfo && documentationInfo.map(item =>
+                        documentationInfo && documentationInfo.map((item, index) =>
                             <div key={item.id} className="col-span-12 md:col-span-6 lg:col-span-4">
                                 <div className="flex flex-col justify-center gap-6 bg-white rounded-xl p-6">
-                                    <h2 className="text-xl text-[#343C6A] font-semibold text-center">
+                                    <h2 className="text-sm text-[#343C6A] font-semibold text-center">
                                         {item.name}
+                                        {index == 2 && <p className="opacity-0">{item.name}</p>}
                                     </h2>
+                                    <div className="flex justify-center">
+                                        {item.icon}
+                                    </div>
                                     <div className="text-center">
-                                        <a href={item.link} className="text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                            HYPERLINK
+                                        <a href={item.link} className="text-white bg-[#263ca2] hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">
+                                            View
                                         </a>
                                     </div>
                                 </div>
