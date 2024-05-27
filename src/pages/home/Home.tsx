@@ -7,7 +7,6 @@ import Header from "../../components/Header";
 import Documentation from "../../components/Documentation";
 import UsdtWallet from "../../components/UsdtWallet";
 import ApexChart from "../../components/ApexChart";
-import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import { queryClient } from "../../main";
 
@@ -34,7 +33,6 @@ export default function App() {
                     <Documentation />
                 </div>
             </div>
-            <Toaster />
         </>
     )
 }

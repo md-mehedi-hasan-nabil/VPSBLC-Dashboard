@@ -8,16 +8,26 @@ export default function Navbar() {
         localStorage.removeItem("username")
         window.location.reload()
     }
+
+    function handleSidebarMenu() {
+        const aside = document.getElementById("dashboard-sidebar") as HTMLElement;
+    
+        if (aside.classList.contains("-translate-x-full")) {
+            aside.classList.remove("-translate-x-full");
+            aside.classList.add("transform-none");
+        } else {
+            aside.classList.remove("transform-none");
+            aside.classList.add("-translate-x-full");
+        }
+    }
+
     return (
         <nav className="fixed top-0 z-50 w-full bg-white border-b border-stone-200">
             <div className="px-3 py-4 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start rtl:justify-end">
                         <button
-                            data-drawer-target="logo-sidebar"
-                            data-drawer-toggle="logo-sidebar"
-                            aria-controls="logo-sidebar"
-                            type="button"
+                            onClick={handleSidebarMenu}
                             className="inline-flex items-center p-2 text-sm text-stone-500 rounded-lg sm:hidden hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-stone-200 dark:text-stone-400 dark:hover:bg-stone-700 dark:focus:ring-stone-600"
                         >
                             <span className="sr-only">Open sidebar</span>

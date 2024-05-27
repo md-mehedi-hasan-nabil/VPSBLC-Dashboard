@@ -35,9 +35,9 @@ export default function UsdtWallet() {
 
             <div className="grid grid-cols-12 mt-5">
                 <div className="col-span-12 md:col-span-6 flex items-center gap-4">
-                    <div className="flex justify-between items-center gap-3 bg-white rounded-xl p-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-3 bg-white rounded-xl p-6">
                         <img src={wallet} alt="wallet" />
-                        <p className="text-xl text-primary">{
+                        <p className="text-sm md:text-xl text-primary">{
                             isSuccess && clientInfo["ERC20 Wallet Address"]
                         }</p>
                     </div>

@@ -49,7 +49,7 @@ export default function Documentation() {
     }, [isSuccess, clientInfo])
 
     return (
-        <div className="mt-8">
+        <div id="documentation" className="mt-8">
             <h2 className="text-3xl text-[#343C6A] font-semibold">
                 DOCUMENTATION
             </h2>

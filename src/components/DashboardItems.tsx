@@ -64,17 +64,17 @@ export default function DashboardItems() {
     }, [isSuccessVpsblcInfo, vpsblcInfo])
 
     return (
-        <div className="grid grid-cols-12 gap-8 mt-8">
+        <div className="grid grid-cols-12 gap-4 md:gap-8 mt-8">
             {
                 dashboardItems && dashboardItems.map(item =>
                     <div key={item.id} className="col-span-12 md:col-span-4 bg-white rounded-xl p-6">
                         <h3 className="text-base font-semibold text-secondary">{item.name}</h3>
-                        <div className="flex justify-between">
+                        <div className="flex md:flex-col lg:flex-row justify-between">
                             <div>
-                                <h2 className="text-3xl font-bold mt-8">{item.title}</h2>
+                                <h2 className="text-xl lg:text-2xl font-bold mt-8">{item.title}</h2>
                             </div>
                             <div>
-                                <img src={item.icon} alt={item.name} />
+                                <img className="w-20 h-20" src={item.icon} alt={item.name} />
                             </div>
                         </div>
                     </div>

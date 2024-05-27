@@ -21,7 +21,7 @@ export default function Header() {
   if (isLoadingClientInfo) {
     content = <Loader />
   } else if (isSuccessClientInfo) {
-    content = <div id="dashboard" className="flex justify-between items-center">
+    content = <div id="dashboard" className="flex flex-col md:flex-row md:justify-between md:items-center">
       <h2 className="text-3xl font-bold">Welcome <span className="text-[#2464EA]">
         {
           isSuccessClientInfo && <>
@@ -31,7 +31,7 @@ export default function Header() {
         }
       </span>
       </h2>
-      <div>
+      <div className="mt-5 md:mt-0">
         <h3 className="text-xl font-semibold">VPSBLC TX-ID:</h3>
         <p className="text-xl text-primary">{(clientInfo as ClientInformation)["TX Code"]}</p>
       </div>

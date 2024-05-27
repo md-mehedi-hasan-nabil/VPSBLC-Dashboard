@@ -26,12 +26,15 @@ export default function Login() {
     })
       .then(res => res.json())
       .then(data => {
-        toast.success("Login successfull.")
-        navigate("/dashboard")
-        localStorage.setItem("username", data?.username)
+        if (data.success) {
+          toast.success("Login successfull.")
+          navigate("/dashboard")
+          localStorage.setItem("username", data?.username)
+        } else {
+          toast.error("Please correct username and password.")
+        }
       })
       .catch(err => {
-        toast.error("Username or password is wrong.")
         console.log(err)
       })
   }
@@ -39,7 +42,7 @@ export default function Login() {
   return (
     <section className="h-screen flex justify-center items-center">
       <div className="w-full">
-        <form className="max-w-96 mx-auto" onSubmit={handleLogin}>
+        <form className="max-w-96 mx-auto px-6" onSubmit={handleLogin}>
           <div className="mb-8">
             <Link to="/"><img className="mx-auto" src={logo} alt="logo" /></Link>
             <p className="my-4 text-3xl font-semibold">Login to your account</p>
