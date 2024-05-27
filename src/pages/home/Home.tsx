@@ -6,18 +6,19 @@ import DashboardItems from "../../components/DashboardItems";
 import Header from "../../components/Header";
 import Documentation from "../../components/Documentation";
 import UsdtWallet from "../../components/UsdtWallet";
-import CognitiveProfileChart from "../../components/ApexChart";
+import ApexChart from "../../components/ApexChart";
 import { Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { queryClient } from "../../main";
 
 export default function App() {
-    const navigate = useNavigate();
-    const username = localStorage.getItem("username")
+    useEffect(() => {
+        queryClient.invalidateQueries({
+            queryKey:
+                ['recentDisbursements', "documentationInfo", "clientInfo", "disbursementOverview"]
+        })
+    }, [])
 
-    if (!username) {
-        navigate("/")
-    }
-    
     return (
         <>
             <Navbar />
@@ -27,8 +28,7 @@ export default function App() {
                 <div className="p-4 mt-14">
                     <Header />
                     <DashboardItems />
-                    <CognitiveProfileChart />
-                    {/* <ApexChart /> */}
+                    <ApexChart />
                     <Disbursement />
                     <UsdtWallet />
                     <Documentation />

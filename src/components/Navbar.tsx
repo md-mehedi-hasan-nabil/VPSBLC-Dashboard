@@ -2,9 +2,15 @@ import { TbSettings2 } from "react-icons/tb";
 import avatar from "../assets/user.png"
 
 export default function Navbar() {
+    const username = localStorage.getItem("username")
+
+    function handleLogout() {
+        localStorage.removeItem("username")
+        window.location.reload()
+    }
     return (
-        <nav className="fixed top-0 z-50 w-full bg-white border-b border-stone-200 dark:bg-stone-800 dark:border-stone-700">
-            <div className="px-3 py-3 lg:px-5 lg:pl-3">
+        <nav className="fixed top-0 z-50 w-full bg-white border-b border-stone-200">
+            <div className="px-3 py-4 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start rtl:justify-end">
                         <button
@@ -62,24 +68,19 @@ export default function Navbar() {
                                         className="text-sm text-stone-900 dark:text-white"
                                         role="none"
                                     >
-                                        Neil Sims
+                                        {username ? username : ""}
                                     </p>
-                                    <p
-                                        className="text-sm font-medium text-stone-900 truncate dark:text-stone-300"
-                                        role="none"
-                                    >
-                                        neil.sims@flowbite.com
-                                    </p>
+
                                 </div>
                                 <ul className="py-1" role="none">
                                     <li>
-                                        <a
-                                            href="#"
+                                        <button
                                             className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-600 dark:hover:text-white"
                                             role="menuitem"
+                                            onClick={handleLogout}
                                         >
                                             Sign out
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>

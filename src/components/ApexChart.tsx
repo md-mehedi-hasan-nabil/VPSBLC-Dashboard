@@ -1,11 +1,49 @@
+import { useQuery } from '@tanstack/react-query';
 import { ApexOptions } from 'apexcharts';
+import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
+interface Disbursement {
+    disbursement: string;
+    date_paid: string;
+    disbursements_paid: number;
+    disbursements_expected: number;
+    blockchain_tx_url: string;
+}
+
 export default function ApexChart() {
-    const data = [1000, 10000, 1000, 500, 2500, 3000, 1010, 15000, 1000, 10050];
-    const xCategories = ['Disbursement 1', 'Disbursement 2', 'Disbursement 3', 'Disbursement 4', 'Disbursement 5', 'Disbursement 6',
-        'Disbursement 7', 'Disbursement 8', 'Disbursement 9', 'Disbursement 10'
-    ];
+    const { data: disbursementInfo, isSuccess } = useQuery({
+        queryKey: ['disbursementInfo'],
+        queryFn: async () => {
+            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-info')
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+
+            return await response.json()
+        },
+    })
+
+    const [data, setData] = useState<number[] | []>([])
+    const [xCategories, setXCategories] = useState<string[] | []>([])
+
+    useEffect(() => {
+        if (isSuccess) {
+            const values: number[] = [];
+            const xCategoriesValues: string[] = []
+
+            disbursementInfo.forEach((item: Disbursement) => {
+                values.push(item.disbursements_expected)
+                xCategoriesValues.push(item.disbursement)
+            })
+
+            setData(values)
+            setXCategories(xCategoriesValues)
+
+        }
+    }, [isSuccess, disbursementInfo])
+
 
     const chartOptions: ApexOptions = {
         series: [
@@ -71,5 +109,3 @@ export default function ApexChart() {
         </div>
     );
 }
-
-
