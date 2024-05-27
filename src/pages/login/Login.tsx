@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import logo from "../../assets/logo.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,14 @@ export default function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+
+  useEffect(() => {
+    const user = localStorage.getItem("username")
+    
+    if (user) {
+      navigate("/dashboard")
+    }
+  }, [navigate])
 
   function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
