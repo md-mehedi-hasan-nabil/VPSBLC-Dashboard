@@ -30,12 +30,12 @@ export default function Header() {
             {clientInfo["First Name"]}{" "}
             {clientInfo["Last Name"]}
           </>
-        }
+        }!
       </span>
         <p className="text-base font-semibold mt-2">Today is {formatDate(new Date())}</p>
       </h2>
       <div className="mt-5 md:mt-0">
-        <div className="text-xl font-semibold flex text-center items-center justify-center gap-1">
+        <div className="text-xl font-semibold flex text-center items-center md:justify-center gap-1">
           <FcDiploma1 />
           <p>VPSBLC TX-ID:</p>
         </div>

@@ -20,7 +20,7 @@ const links = [
     },
     {
         id: 3,
-        name: "Disbursement",
+        name: "Disbursement overview",
         icon: <RiMenuSearchLine className="text-2xl" />,
         link: "#disbursement"
     },
@@ -42,7 +42,7 @@ export default function DashboardSidebar() {
     return (
         <aside
             id="dashboard-sidebar"
-            className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-stone-200 sm:translate-x-0"
+            className="fixed top-0 left-0 z-40 w-64 h-screen pt-24 transition-transform -translate-x-full bg-white border-r border-stone-200 sm:translate-x-0"
             aria-label="Sidebar"
         >
             <div className="h-full px-3 pb-4 overflow-y-auto bg-white">
@@ -55,11 +55,10 @@ export default function DashboardSidebar() {
                         links.map(item => <li key={item.id}>
                             <a
                                 href={item.link}
-                                className="flex gap-2 items-center p-2 text-[#9197B3] rounded-lg hover:bg-gradient hover:text-white group"
+                                className="flex gap-2 items-center px-2 py-3 text-[#9197B3] rounded-lg shadow-custom hover:bg-gradient hover:text-white group"
                             >
-                                {/* <img className="text-[#9197B3]" src={item.icon} alt={item.name} /> */}
                                 {item.icon}
-                                <span>{item.name}</span>
+                                <span className="text-sm">{item.name}</span>
                             </a>
                         </li>)
                     }

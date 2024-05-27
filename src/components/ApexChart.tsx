@@ -114,7 +114,7 @@ export default function ApexChart() {
     };
 
     return (
-        <div id="growth-analytics" className='pb-4 pt-4'>
+        <div id="growth-analytics" className='pt-4'>
             <div className="overflow-hidden">
                 <h2 className="my-5 text-3xl text-[#343C6A] font-semibold">GROWTH ANALYICS</h2>
                 <div className='bg-white p-4 rounded-2xl'>

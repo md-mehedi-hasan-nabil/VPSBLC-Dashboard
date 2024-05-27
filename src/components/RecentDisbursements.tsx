@@ -33,10 +33,10 @@ export default function RecentDisbursements() {
     if (isSuccess) {
         content = recentDisbursementsData.map((item: RecentDisbursement) =>
             <tr key={item.most_recent_disbursement} className="bg-white border-b">
-                <th scope="row" className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" className="px-6 py-2 font-medium text-secondary whitespace-nowrap dark:text-white">
                     {item.disbursement_title}
                 </th>
-                <td className="px-6 py-4">
+                <td className="py-4">
                     {item.date_paid != "" ? formatDate(item.date_paid) : ""}
                 </td>
                 <td className="px-6 py-4">
@@ -50,15 +50,15 @@ export default function RecentDisbursements() {
     }
 
     return (
-        <div className="col-span-12 lg:col-span-5 bg-white rounded-xl">
+        <div className="col-span-12 lg:col-span-5 bg-white rounded-2xl border-t-8 border-[#252990]">
             <div className="flex items-center gap-2 mb-6 pt-4 pl-4">
                 <FcTodoList className="text-lg" />
-                <h2 className="text-base font-semibold">Recent Disbursements :</h2>
+                <h2 className="text-base font-semibold text-black">Recent Disbursements :</h2>
             </div>
 
             <div className="relative overflow-x-auto">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                    <thead className="text-xs text-secondary uppercase bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Disbursement Title

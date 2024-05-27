@@ -45,7 +45,7 @@ export default function Documentation() {
                     id: 3,
                     name: "VPSBLC NFT",
                     link: (clientInfo as ClientInformation)["VPSBLC NFT"],
-                    icon: <FcElectronics className="text-7xl" />
+                    icon: <FcElectronics className="text-8xl" />
                 }
             ]
 
@@ -62,12 +62,11 @@ export default function Documentation() {
             <div className="grid grid-cols-12 gap-6 mt-8">
                 <div className="col-span-12 lg:col-span-7 grid grid-cols-12 gap-6">
                     {
-                        documentationInfo && documentationInfo.map((item, index) =>
+                        documentationInfo && documentationInfo.map((item) =>
                             <div key={item.id} className="col-span-12 md:col-span-6 lg:col-span-4">
-                                <div className="flex flex-col justify-center gap-6 bg-white rounded-xl p-6">
+                                <div className="flex flex-col justify-center gap-6 bg-white rounded-2xl p-6 border-t-8 border-[#252990]">
                                     <h2 className="text-sm text-[#343C6A] font-semibold text-center">
                                         {item.name}
-                                        {index == 2 && <p className="opacity-0">{item.name}</p>}
                                     </h2>
                                     <div className="flex justify-center">
                                         {item.icon}

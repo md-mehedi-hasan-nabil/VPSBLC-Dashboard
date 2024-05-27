@@ -37,11 +37,11 @@ export default function UsdtWallet() {
 
 
     return (
-        <div className="mt-8">
+        <div className="pt-10">
             <h3 className="text-secondary font-semibold text-xl">USDT-ETH WALLET</h3>
             <div className="grid grid-cols-12 mt-5">
                 <div className="col-span-12 md:col-span-6 flex items-center gap-4">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-3 bg-white rounded-xl p-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-3 bg-white shadow-custom rounded-md p-4">
                         <img src={wallet} alt="wallet" />
                         <p className="text-sm md:text-xl text-primary">{
                             (isSuccess && clientInfo["ERC20 Wallet Address"]) ? clientInfo["ERC20 Wallet Address"] : "Wallet address is not available"
@@ -51,7 +51,7 @@ export default function UsdtWallet() {
                 </div>
             </div>
 
-            <div className="flex gap-2 mt-6">
+            <div className="flex flex-col md:flex-row gap-2 mt-6">
                 <div>
                     <FcDisclaimer className="text-5xl" />
                 </div>

@@ -23,7 +23,7 @@ export default function App() {
             <Navbar />
             <DashboardSidebar />
 
-            <div className="p-4 sm:ml-64">
+            <div className="p-4 sm:ml-64 mt-10">
                 <div className="p-4 mt-14">
                     <Header />
                     <DashboardItems />

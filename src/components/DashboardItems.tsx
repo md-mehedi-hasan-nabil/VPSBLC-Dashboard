@@ -47,7 +47,7 @@ export default function DashboardItems() {
                 {
                     id: 2,
                     name: "VPSBLC Funding",
-                    title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Funding Status"],
+                    title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Price"] + "\n" + "FUNDED",
                     icon: virtual as string
                 },
                 {
@@ -71,7 +71,7 @@ export default function DashboardItems() {
                         <h3 className="text-base font-semibold text-white bg-gradient px-4 py-2 rounded-t-2xl overflow-hidden">{item.name}</h3>
                         <div className="flex md:flex-col lg:flex-row justify-between items-center p-4">
                             <div>
-                                <h2 className="text-xl lg:text-2xl font-bold text-[#4caf50] pr-5">{item.title}</h2>
+                                <h2 className="text-xl lg:text-2xl font-bold text-[#4caf50] lg:pr-10">{item.title}</h2>
                             </div>
                             <div>
                                 <img className="w-20 h-20" src={item.icon} alt={item.name} />
