@@ -123,6 +123,7 @@ export default function ApexChart() {
                 }
             }
         },
+        colors: ['#262F96'],
         xaxis: {
             categories: xCategories,
         },
