@@ -43,7 +43,7 @@ export default function RecentDisbursements() {
                     {item.amount_paid}
                 </td>
                 <td className="px-6 py-4">
-                    <a href={item.blockchain_tx_url} className="text-sm border border-primary px-1 rounded-md">View</a>
+                    <a target="_blank" href={item.blockchain_tx_url} className="text-sm border border-primary px-1 rounded-md">View</a>
                 </td>
             </tr>
         )
