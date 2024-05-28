@@ -72,7 +72,7 @@ export default function DashboardItems() {
                         <div className="flex md:flex-col lg:flex-row justify-between items-center p-4">
                             <div>
                                 {
-                                    item.title.includes("COMPLETED") ? <h2 className="text-xl lg:text-2xl font-bold text-[#4CAF50] lg:pr-10">
+                                    item.title.includes("COMPLETED") || item.title.includes("FUNDED") ? <h2 className="text-xl lg:text-2xl font-bold text-[#4CAF50] lg:pr-10">
                                         {item.title}
                                     </h2> : <h2 className="text-xl lg:text-2xl font-bold text-[#ebbf2c] lg:pr-10">
                                         {item.title}
