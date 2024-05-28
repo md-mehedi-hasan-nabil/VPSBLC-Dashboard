@@ -14,7 +14,7 @@ export default {
       black: colors.black,
       white: colors.white,
       stone: colors.stone,
-      primary: "#2464EA",
+      primary: "#262F96",
       secondary: "#202224",
     },
     extend: {

@@ -24,7 +24,7 @@ export default function Header() {
     content = <Loader />
   } else if (isSuccessClientInfo) {
     content = <div id="dashboard" className="flex flex-col md:flex-row md:justify-between md:items-center">
-      <h2 className="text-3xl font-bold">Welcome <span className="text-[#2464EA]">
+      <h2 className="text-3xl font-bold">Welcome <span className="text-primary">
         {
           isSuccessClientInfo && <>
             {clientInfo["First Name"]}{" "}

@@ -40,19 +40,19 @@ export default function DashboardItems() {
             const result: IItem[] = [
                 {
                     id: 1,
-                    name: "VPSBLC Purchase",
+                    name: "VPSBLC PURCHASE STATUS",
                     title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Status"],
                     icon: vpsblc as string
                 },
                 {
                     id: 2,
-                    name: "VPSBLC Funding",
+                    name: "VPSBLC FUNDING STATUS",
                     title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Price"] + "\n" + "FUNDED",
                     icon: virtual as string
                 },
                 {
                     id: 3,
-                    name: "Trace Status",
+                    name: "VPSBLC TRADING STATUS",
                     title: (vpsblcInfo as IVPSBLCInformation)["Trace Status"],
                     icon: trade as string
                 }
