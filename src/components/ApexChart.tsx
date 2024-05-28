@@ -3,6 +3,7 @@ import { ApexOptions } from 'apexcharts';
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { FcCurrencyExchange } from 'react-icons/fc';
+import { VPSBLCStatus } from '../types';
 
 export interface Disbursement {
     disbursement: string;
@@ -27,47 +28,49 @@ export default function ApexChart() {
         },
     })
 
-    // const { data: vpsblcInfo, isSuccess: isSuccessVpsblcInfo } = useQuery({
-    //     queryKey: ['vpsblcInfo'],
-    //     queryFn: async () => {
-    //         const response = await fetch(import.meta.env.VITE_API_URL + '/vpsblc-info')
+    const { data: vpsblcInfo, isSuccess: isSuccessVpsblcInfo } = useQuery({
+        queryKey: ['vpsblcInfo'],
+        queryFn: async () => {
+            const response = await fetch(import.meta.env.VITE_API_URL + '/vpsblc-info')
 
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok')
-    //         }
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
 
-    //         return await response.json()
-    //     },
-    // })
+            return await response.json()
+        },
+    })
 
     const [data, setData] = useState<number[] | []>([])
     const [xCategories, setXCategories] = useState<string[] | []>([])
 
     useEffect(() => {
-        if (isSuccessDisbursementInfo) {
-            const values1: number[] = [];
+        if (isSuccessDisbursementInfo && isSuccessVpsblcInfo) {
+            // const values1: number[] = [];
             const values2: number[] = [];
             const xCategoriesValues: string[] = []
             const disbursements_expected_list: number[] = [];
+            const VPSBLC_Funding = (vpsblcInfo as VPSBLCStatus)['VPSBLC Funding Status']?.replace("FUNDED", "")?.replace("$", "")?.trim()
 
             disbursementInfo.forEach((item: Disbursement) => {
                 disbursements_expected_list.push(Number(item.disbursements_expected))
 
 
-                values1.push(Number(item.disbursements_expected))
+                // values1.push(Number(item.disbursements_expected))
                 values2.push(Number(item.line_chart.replace("%", "")))
                 xCategoriesValues.push(item.disbursement)
             })
 
-            // const total = values1.reduce((sum, value) => sum + value, 0);
-            // const percentages = values1.map(value => Math.floor((value / total) * 100) * 5);
+            // disbursement_1 = ""
+
+            console.log(VPSBLC_Funding)
 
             console.log(disbursements_expected_list)
             setData(values2)
             setXCategories(xCategoriesValues)
 
         }
-    }, [isSuccessDisbursementInfo, disbursementInfo])
+    }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo])
 
     // console.log(disbursementInfo)
 

@@ -8,3 +8,11 @@ export interface ClientInformation {
     "Memorandum of Understanding": string;
     "VPSBLC NFT": string;
 }
+
+export interface VPSBLCStatus {
+    "VPSBLC Purchase Price": string;
+    "VPSBLC Face Value": string;
+    "VPSBLC Purchase Status": string;
+    "VPSBLC Funding Status": string;
+    "Trace Status": string;
+}
