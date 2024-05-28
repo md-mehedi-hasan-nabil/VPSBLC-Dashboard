@@ -98,12 +98,12 @@ export default function ApexChart() {
             categories: xCategories,
         },
         yaxis: {
-            min: 20,
+            min: 0,
             max: 100,
             tickAmount: 20,
             labels: {
                 formatter: (value: number) => {
-                    if (value === 20 || value === 40 || value === 60 || value === 80 || value === 100) {
+                    if (value === 0 || value === 20 || value === 40 || value === 60 || value === 80 || value === 100) {
                         return value.toString();
                     } else {
                         return '';
