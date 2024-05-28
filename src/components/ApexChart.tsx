@@ -27,8 +27,6 @@ export default function ApexChart() {
         },
     })
 
-    var colorPalette = ['#262F96']
-
     const { data: vpsblcInfo, isSuccess: isSuccessVpsblcInfo } = useQuery({
         queryKey: ['vpsblcInfo'],
         queryFn: async () => {
@@ -92,7 +90,7 @@ export default function ApexChart() {
                 show: false
             }
         },
-        colors: colorPalette,
+        colors: ['#262F96'],
         dataLabels: {
             enabled: false,
         },
