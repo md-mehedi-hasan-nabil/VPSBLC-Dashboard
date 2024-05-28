@@ -90,7 +90,7 @@ export default function ApexChart() {
                 show: false
             }
         },
-        colors: ['#262F96'],
+        colors: ['#263CA2'],
         dataLabels: {
             enabled: false,
         },
