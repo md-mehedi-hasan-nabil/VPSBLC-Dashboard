@@ -3,7 +3,6 @@ import { ApexOptions } from 'apexcharts';
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { FcCurrencyExchange } from 'react-icons/fc';
-import { VPSBLCStatus } from '../types';
 
 export interface Disbursement {
     disbursement: string;
@@ -43,36 +42,28 @@ export default function ApexChart() {
 
     const [data, setData] = useState<number[] | []>([])
     const [xCategories, setXCategories] = useState<string[] | []>([])
+    const [disbursements, setDisbursements] = useState<number[] | []>([])
 
     useEffect(() => {
         if (isSuccessDisbursementInfo && isSuccessVpsblcInfo) {
-            // const values1: number[] = [];
-            const values2: number[] = [];
+            const values: number[] = [];
             const xCategoriesValues: string[] = []
             const disbursements_expected_list: number[] = [];
-            const VPSBLC_Funding = (vpsblcInfo as VPSBLCStatus)['VPSBLC Funding Status']?.replace("FUNDED", "")?.replace("$", "")?.trim()
+            // const VPSBLC_Funding = (vpsblcInfo as VPSBLCStatus)['VPSBLC Funding Status']?.replace("FUNDED", "")?.replace("$", "")?.trim()
 
             disbursementInfo.forEach((item: Disbursement) => {
                 disbursements_expected_list.push(Number(item.disbursements_expected))
-
-
-                // values1.push(Number(item.disbursements_expected))
-                values2.push(Number(item.line_chart.replace("%", "")))
+                values.push(Number(item.line_chart.replace("%", "")))
                 xCategoriesValues.push(item.disbursement)
             })
 
-            // disbursement_1 = ""
-
-            console.log(VPSBLC_Funding)
-
-            console.log(disbursements_expected_list)
-            setData(values2)
+            setDisbursements(disbursements_expected_list)
+            setData(values)
             setXCategories(xCategoriesValues)
 
         }
     }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo])
 
-    // console.log(disbursementInfo)
 
     const chartOptions: ApexOptions = {
         series: [
@@ -122,8 +113,14 @@ export default function ApexChart() {
         },
         tooltip: {
             x: {
+                formatter: function (_val, { dataPointIndex }) {
+                    console.log(dataPointIndex)
+                    return "Disbursement - " + disbursements[dataPointIndex]
+                }
+            },
+            y: {
                 formatter: function (val) {
-                    return (val * 10) + "%"
+                    return val + "%"
                 }
             }
         },
@@ -136,7 +133,9 @@ export default function ApexChart() {
             tickAmount: 20,
             labels: {
                 formatter: (value: number) => {
-                    if (value === 0 || value === 20 || value === 40 || value === 60 || value === 80 || value === 100) {
+                    if (value === 0 || value === 10 || value === 20 || value === 30 || value === 40 || value === 50 ||
+                        value === 60 || value === 70 || value === 80 || value === 90 || value === 100
+                    ) {
                         return value.toString();
                     } else {
                         return '';
