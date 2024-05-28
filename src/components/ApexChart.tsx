@@ -4,16 +4,17 @@ import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { FcCurrencyExchange } from 'react-icons/fc';
 
-interface Disbursement {
+export interface Disbursement {
     disbursement: string;
     date_paid: string;
-    disbursements_paid: number;
-    disbursements_expected: number;
+    disbursements_paid: string;
+    disbursements_expected: string;
+    line_chart: string;
     blockchain_tx_url: string;
 }
 
 export default function ApexChart() {
-    const { data: disbursementInfo, isSuccess } = useQuery({
+    const { data: disbursementInfo, isSuccess: isSuccessDisbursementInfo } = useQuery({
         queryKey: ['disbursementInfo'],
         queryFn: async () => {
             const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-info')
@@ -26,27 +27,49 @@ export default function ApexChart() {
         },
     })
 
+    // const { data: vpsblcInfo, isSuccess: isSuccessVpsblcInfo } = useQuery({
+    //     queryKey: ['vpsblcInfo'],
+    //     queryFn: async () => {
+    //         const response = await fetch(import.meta.env.VITE_API_URL + '/vpsblc-info')
+
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok')
+    //         }
+
+    //         return await response.json()
+    //     },
+    // })
+
     const [data, setData] = useState<number[] | []>([])
     const [xCategories, setXCategories] = useState<string[] | []>([])
 
     useEffect(() => {
-        if (isSuccess) {
-            const values: number[] = [];
+        if (isSuccessDisbursementInfo) {
+            const values1: number[] = [];
+            const values2: number[] = [];
             const xCategoriesValues: string[] = []
+            const disbursements_expected_list: number[] = [];
 
             disbursementInfo.forEach((item: Disbursement) => {
-                values.push(Number(item.disbursements_expected))
+                disbursements_expected_list.push(Number(item.disbursements_expected))
+
+
+                values1.push(Number(item.disbursements_expected))
+                values2.push(Number(item.line_chart.replace("%", "")))
                 xCategoriesValues.push(item.disbursement)
             })
 
-            const total = values.reduce((sum, value) => sum + value, 0);
-            const percentages = values.map(value => Math.floor((value / total) * 100) * 5);
+            // const total = values1.reduce((sum, value) => sum + value, 0);
+            // const percentages = values1.map(value => Math.floor((value / total) * 100) * 5);
 
-            setData(percentages)
+            console.log(disbursements_expected_list)
+            setData(values2)
             setXCategories(xCategoriesValues)
 
         }
-    }, [isSuccess, disbursementInfo])
+    }, [isSuccessDisbursementInfo, disbursementInfo])
+
+    // console.log(disbursementInfo)
 
     const chartOptions: ApexOptions = {
         series: [
@@ -94,6 +117,13 @@ export default function ApexChart() {
         markers: {
             size: 1
         },
+        tooltip: {
+            x: {
+                formatter: function (val) {
+                    return (val * 10) + "%"
+                }
+            }
+        },
         xaxis: {
             categories: xCategories,
         },
@@ -114,7 +144,7 @@ export default function ApexChart() {
     };
 
     return (
-        <div id="growth-analytics" className='pt-4'>
+        <div id="growth-analytics" className='pt-4' >
             <div className="overflow-hidden">
                 <h2 className="my-5 text-3xl text-[#343C6A] font-semibold">GROWTH ANALYICS</h2>
                 <div className='bg-white p-4 rounded-2xl'>
@@ -125,6 +155,6 @@ export default function ApexChart() {
                     <ReactApexChart options={chartOptions} series={chartOptions.series} type="line" height={350} />
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
