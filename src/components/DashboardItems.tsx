@@ -47,7 +47,7 @@ export default function DashboardItems() {
                 {
                     id: 2,
                     name: "VPSBLC FUNDING STATUS",
-                    title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Price"] + "\n" + "FUNDED",
+                    title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Funding Status"],
                     icon: virtual as string
                 },
                 {
