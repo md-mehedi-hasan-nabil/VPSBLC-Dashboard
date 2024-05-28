@@ -68,7 +68,7 @@ export default function ApexChart() {
     const chartOptions: ApexOptions = {
         series: [
             {
-                name: "Trade Performance",
+                name: "Trade Performancecc",
                 data
             }
         ],
