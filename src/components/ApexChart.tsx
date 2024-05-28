@@ -114,7 +114,6 @@ export default function ApexChart() {
         tooltip: {
             x: {
                 formatter: function (_val, { dataPointIndex }) {
-                    console.log(dataPointIndex)
                     return "Disbursement - " + disbursements[dataPointIndex]
                 }
             },
