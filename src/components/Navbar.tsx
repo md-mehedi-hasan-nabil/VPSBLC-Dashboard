@@ -49,7 +49,7 @@ export default function Navbar() {
                         <a href="/dashboard" className="flex items-center gap-2 ms-2 md:me-24 text-white">
                             <img className="w-10 h-10" src={unlock} alt="unlock" />
                             <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
-                                VPSBLC Client Terminal
+                                VPSBLC Dashboard
                             </span>
                         </a>
                     </div>

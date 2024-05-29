@@ -3,6 +3,7 @@ import { ApexOptions } from 'apexcharts';
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { FcCurrencyExchange } from 'react-icons/fc';
+import { VPSBLCStatus } from '../types';
 
 export interface Disbursement {
     disbursement: string;
@@ -40,36 +41,58 @@ export default function ApexChart() {
         },
     })
 
-    const [data, setData] = useState<number[] | []>([])
-    const [xCategories, setXCategories] = useState<string[] | []>([])
-    const [disbursements, setDisbursements] = useState<number[] | []>([])
+    const [dataLineChart, setDataLineChart] = useState<number[]>([]);
+    const [dataColumnChart, setDataColumnChart] = useState<number[]>([]);
+    const [xCategories, setXCategories] = useState<string[]>([]);
+    const [disbursements, setDisbursements] = useState<number[]>([]);
 
     useEffect(() => {
         if (isSuccessDisbursementInfo && isSuccessVpsblcInfo) {
-            const values: number[] = [];
-            const xCategoriesValues: string[] = []
+            const columnCharts: number[] = [];
             const disbursements_expected_list: number[] = [];
-            // const VPSBLC_Funding = (vpsblcInfo as VPSBLCStatus)['VPSBLC Funding Status']?.replace("FUNDED", "")?.replace("$", "")?.trim()
+            const xCategoriesValues: string[] = [];
+
+            // Assume VPSBLC_Funding is derived from vpsblcInfo correctly
+            const VPSBLC_Funding = parseFloat((vpsblcInfo as VPSBLCStatus)['VPSBLC Funding Status']?.replace("FUNDED", "").replace("$", "").trim() || '0');
 
             disbursementInfo.forEach((item: Disbursement) => {
-                disbursements_expected_list.push(Number(item.disbursements_expected))
-                values.push(Number(item.line_chart.replace("%", "")))
-                xCategoriesValues.push(item.disbursement)
-            })
+                disbursements_expected_list.push(Number(item.disbursements_expected));
+                columnCharts.push(Number(item.line_chart.replace("%", "")));
+                xCategoriesValues.push(item.disbursement);
+            });
 
-            setDisbursements(disbursements_expected_list)
-            setData(values)
-            setXCategories(xCategoriesValues)
+            // const totalSum = disbursements_expected_list.reduce((acc, val) => acc + val, 0);
 
+            // Convert each value to a percentage of the total sum
+            // const percentageList = disbursements_expected_list.map(value => (value / totalSum) * 100);
+
+
+            // Calculate cumulative disbursements as percentages
+            const cumulativeDisbursements = disbursements_expected_list.map((_disbursement, index, array) => {
+                const cumulativeSum = array.slice(0, index + 1).reduce((acc, val) => acc + val, 0);
+                return (((cumulativeSum / VPSBLC_Funding)) / VPSBLC_Funding) * 100;
+            });
+
+            setDataLineChart(cumulativeDisbursements);
+            // setDataLineChart(percentageList);
+            setDataColumnChart(columnCharts);
+            setXCategories(xCategoriesValues);
+            setDisbursements(disbursements_expected_list);
         }
-    }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo])
+    }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo]);
 
 
     const chartOptions: ApexOptions = {
         series: [
             {
+                name: 'Disbursement',
+                type: 'column',
+                data: dataColumnChart
+            },
+            {
                 name: "Trade Performance",
-                data
+                type: "line",
+                data: dataLineChart
             }
         ],
         chart: {
@@ -90,7 +113,7 @@ export default function ApexChart() {
                 show: false
             }
         },
-        colors: ['#263CA2'],
+        colors: ['#ebbf2c', '#4017fc'],
         dataLabels: {
             enabled: false,
         },
