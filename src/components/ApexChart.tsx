@@ -70,7 +70,7 @@ export default function ApexChart() {
             // Calculate cumulative disbursements as percentages
             const cumulativeDisbursements = disbursements_expected_list.map((_disbursement, index, array) => {
                 const cumulativeSum = array.slice(0, index + 1).reduce((acc, val) => acc + val, 0);
-                return (((cumulativeSum / VPSBLC_Funding)) / VPSBLC_Funding) * 100;
+                return Number((((cumulativeSum / VPSBLC_Funding) / VPSBLC_Funding) * 100).toFixed());
             });
 
             setDataLineChart(cumulativeDisbursements);
@@ -80,7 +80,6 @@ export default function ApexChart() {
             setDisbursements(disbursements_expected_list);
         }
     }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo]);
-
 
     const chartOptions: ApexOptions = {
         series: [
