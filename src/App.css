@@ -4,3 +4,10 @@ body {
   background-color: #f4f7fc;
   font-family: "Poppins", sans-serif;
 }
+
+.background-image {
+  background-image: url("./assets/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

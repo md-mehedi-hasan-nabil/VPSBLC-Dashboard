@@ -48,9 +48,9 @@ export default function Login() {
   }
 
   return (
-    <section className="h-screen flex justify-center items-center">
+    <section className="h-screen flex justify-center items-center background-image">
       <div className="w-full">
-        <form className="max-w-96 mx-auto px-6" onSubmit={handleLogin}>
+        <form className="max-w-96 mx-auto p-6 bg-white rounded-lg" onSubmit={handleLogin}>
           <div className="mb-8">
             <Link to="/"><img className="mx-auto" src={logo} alt="logo" /></Link>
             <p className="my-4 text-3xl font-semibold">Login to your account</p>

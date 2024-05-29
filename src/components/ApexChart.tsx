@@ -3,7 +3,6 @@ import { ApexOptions } from 'apexcharts';
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { FcCurrencyExchange } from 'react-icons/fc';
-import { VPSBLCStatus } from '../types';
 
 export interface Disbursement {
     disbursement: string;
@@ -42,51 +41,68 @@ export default function ApexChart() {
     })
 
     const [dataLineChart, setDataLineChart] = useState<number[]>([]);
-    const [dataColumnChart, setDataColumnChart] = useState<number[]>([]);
-    const [xCategories, setXCategories] = useState<string[]>([]);
-    const [disbursements, setDisbursements] = useState<number[]>([]);
+    const [dataLineCharPercentagest, setDataLineChartPercentages] = useState<number[]>([]);
+    // const [dataColumnChart, setDataColumnChart] = useState<number[]>([]);
+    // const [xCategories, setXCategories] = useState<string[]>([]);
+    const [disbursementsPaid, setDisbursementsPaid] = useState<number[]>([]);
 
     useEffect(() => {
+        function convertValues(values: number[], percentages: number[]): number[] {
+            if (values.length !== percentages.length) {
+                return []
+            }
+
+            const convertedValues: number[] = [];
+
+            for (let i = 0; i < values.length; i++) {
+                const convertedValue = values[i] * (percentages[i] / 100);
+                convertedValues.push(convertedValue);
+            }
+
+            return convertedValues;
+        }
+
         if (isSuccessDisbursementInfo && isSuccessVpsblcInfo) {
-            const columnCharts: number[] = [];
-            const disbursements_expected_list: number[] = [];
+            const lineCharts: number[] = [];
+            const disbursements_paid_list: number[] = [];
             const xCategoriesValues: string[] = [];
 
-            // Assume VPSBLC_Funding is derived from vpsblcInfo correctly
-            const VPSBLC_Funding = parseFloat((vpsblcInfo as VPSBLCStatus)['VPSBLC Funding Status']?.replace("FUNDED", "").replace("$", "").trim() || '0');
-
             disbursementInfo.forEach((item: Disbursement) => {
-                disbursements_expected_list.push(Number(item.disbursements_expected));
-                columnCharts.push(Number(item.line_chart.replace("%", "")));
+                disbursements_paid_list.push(Number(item.disbursements_paid));
+                lineCharts.push(Number(item.line_chart.replace("%", "")));
                 xCategoriesValues.push(item.disbursement);
             });
 
-            // const totalSum = disbursements_expected_list.reduce((acc, val) => acc + val, 0);
-
-            // Convert each value to a percentage of the total sum
-            // const percentageList = disbursements_expected_list.map(value => (value / totalSum) * 100);
 
 
-            // Calculate cumulative disbursements as percentages
-            const cumulativeDisbursements = disbursements_expected_list.map((_disbursement, index, array) => {
-                const cumulativeSum = array.slice(0, index + 1).reduce((acc, val) => acc + val, 0);
-                return Number((((cumulativeSum / VPSBLC_Funding) / VPSBLC_Funding) * 100).toFixed());
-            });
+            const max = Math.max(...disbursements_paid_list)
+            const list: number[] = []
+            disbursements_paid_list.forEach(value => {
+                const exact_value = (value * 100) / max
+                list.push(exact_value)
+            })
 
-            setDataLineChart(cumulativeDisbursements);
-            // setDataLineChart(percentageList);
-            setDataColumnChart(columnCharts);
-            setXCategories(xCategoriesValues);
-            setDisbursements(disbursements_expected_list);
+            const result = convertValues(disbursements_paid_list, lineCharts)
+            // console.log(disbursements_paid_list)
+            // console.log(lineCharts)
+            // console.log(result)
+
+            setDisbursementsPaid(disbursements_paid_list);
+            setDataLineChart(result)
+            setDataLineChartPercentages(lineCharts)
         }
     }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo]);
+
+    // console.log(dataLineChart)
+    // console.log(disbursementsPaid)
+    // console.log(dataLineCharPercentagest)
 
     const chartOptions: ApexOptions = {
         series: [
             {
                 name: 'Disbursement',
                 type: 'column',
-                data: dataColumnChart
+                data: disbursementsPaid
             },
             {
                 name: "Trade Performance",
@@ -135,31 +151,34 @@ export default function ApexChart() {
         },
         tooltip: {
             x: {
-                formatter: function (_val, { dataPointIndex }) {
-                    return "Disbursement - " + disbursements[dataPointIndex]
+                formatter: function (val) {
+                    return val.toString()
                 }
             },
             y: {
-                formatter: function (val) {
-                    return val + "%"
+                formatter: function (val, { seriesIndex, dataPointIndex, w }) {
+                    if (w.config.series[seriesIndex].type === 'column') {
+                        return val.toString();
+                    } else if (w.config.series[seriesIndex].type === 'line') {
+                        return dataLineCharPercentagest[dataPointIndex] + "%";
+                    }
+                    return val.toString();
                 }
             }
         },
         xaxis: {
-            categories: xCategories,
+            // categories: xCategories,
         },
         yaxis: {
             min: 0,
-            max: 100,
-            tickAmount: 20,
+            max: Math.max(...disbursementsPaid),
+            // tickAmount: 20,
             labels: {
                 formatter: (value: number) => {
-                    if (value === 0 || value === 10 || value === 20 || value === 30 || value === 40 || value === 50 ||
-                        value === 60 || value === 70 || value === 80 || value === 90 || value === 100
-                    ) {
-                        return value.toString();
+                    if (value > 900) {
+                        return (value / 1000) + "k"
                     } else {
-                        return '';
+                        return value.toString()
                     }
                 }
             }
