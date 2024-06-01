@@ -45,7 +45,7 @@ export default function ApexChart() {
     // const [dataColumnChart, setDataColumnChart] = useState<number[]>([]);
     // const [xCategories, setXCategories] = useState<string[]>([]);
     const [disbursementsPaid, setDisbursementsPaid] = useState<number[]>([]);
-
+    console.log(dataLineChart)
     useEffect(() => {
         function convertValues(values: number[], percentages: number[]): number[] {
             if (values.length !== percentages.length) {
@@ -104,11 +104,6 @@ export default function ApexChart() {
                 type: 'column',
                 data: disbursementsPaid
             },
-            {
-                name: "Trade Performance",
-                type: "line",
-                data: dataLineChart
-            }
         ],
         chart: {
             height: 350,
@@ -188,7 +183,7 @@ export default function ApexChart() {
     return (
         <div id="growth-analytics" className='pt-4' >
             <div className="overflow-hidden">
-                <h2 className="my-5 text-3xl text-[#343C6A] font-semibold">GROWTH ANALYICS</h2>
+                {/* <h2 className="my-5 text-3xl text-[#343C6A] font-semibold">DISBURSEMENT OVERVIEW</h2> */}
                 <div className='bg-white p-4 rounded-2xl'>
                     <div className='flex items-center gap-4'>
                         <FcCurrencyExchange className='text-2xl md:text-5xl' />

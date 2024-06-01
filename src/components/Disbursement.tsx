@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import overtime from "../assets/overtime.svg"
 import moneyTransfer from "../assets/money-transfer.svg"
 import bullish from "../assets/bullish.svg"
+import ApexChart from "./ApexChart";
 
 interface IDisbursementOverview {
     "Next Disbursement": string;
@@ -75,6 +76,7 @@ export default function Disbursement() {
             <h2 className="text-3xl text-[#343C6A] font-semibold">
                 DISBURSEMENT OVERVIEW
             </h2>
+            <ApexChart />
             <div className="grid grid-cols-12 md:gap-8 mt-6">
                 {
                     disbursements && disbursements.map(item =>

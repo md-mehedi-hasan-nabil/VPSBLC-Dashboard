@@ -6,9 +6,9 @@ import DashboardItems from "../../components/DashboardItems";
 import Header from "../../components/Header";
 import Documentation from "../../components/Documentation";
 import UsdtWallet from "../../components/UsdtWallet";
-import ApexChart from "../../components/ApexChart";
 import { useEffect } from "react";
 import { queryClient } from "../../main";
+import GrowthAnalytics from "../../components/GrowthAnalytics";
 
 export default function App() {
     useEffect(() => {
@@ -27,7 +27,8 @@ export default function App() {
                 <div className="p-4 mt-14">
                     <Header />
                     <DashboardItems />
-                    <ApexChart />
+                    <GrowthAnalytics />
+                    {/* <ApexChart /> */}
                     <Disbursement />
                     <UsdtWallet />
                     <Documentation />

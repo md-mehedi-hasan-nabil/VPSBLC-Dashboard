@@ -1,6 +1,6 @@
 import avatar from "../assets/user.png"
 import unlock from "../assets/unlock.svg"
-import notification  from "../assets/notification.svg"
+import notification from "../assets/notification.svg"
 
 export default function Navbar() {
     const username = localStorage.getItem("username")
@@ -49,14 +49,14 @@ export default function Navbar() {
                         <a href="/dashboard" className="flex items-center gap-2 ms-2 md:me-24 text-white">
                             <img className="w-10 h-10" src={unlock} alt="unlock" />
                             <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
-                                VPSBLC Dashboard
+                                VPSBLC.io Client Terminal
                             </span>
                         </a>
                     </div>
                     <div className="flex items-center">
                         <div className="flex items-center gap-3 md:gap-6 ms-3">
                             <button>
-                                <img className="w-10 h-10" src={notification } alt="notification " />
+                                <img className="w-10 h-10" src={notification} alt="notification " />
                             </button>
                             <div>
                                 <button
@@ -73,7 +73,7 @@ export default function Navbar() {
                                     />
                                 </button>
                             </div>
-                            
+
                             <div
                                 className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-stone-100 rounded shadow dark:bg-stone-700 dark:divide-stone-600"
                                 id="dropdown-user"
