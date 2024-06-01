@@ -44,12 +44,12 @@ export default function GrowthAnalytics() {
                 <div className="col-span-12 lg:col-span-4 flex justify-between border border-stone-800 rounded-2xl p-5">
                     <div className="col-span-2">
                         <h3 className="text-xl font-medium text-[#202224]">Most Recent Trade</h3>
-                        <h2 className="text-2xl text-[#202224] my-3 font-bold">LONG POSITION ON:</h2>
-                        <p className="text-[42px] font-bold text-[#202224]">XAU/USD</p>
+                        <h2 className="text-[22px] text-[#202224] my-3 font-bold">LONG POSITION ON:</h2>
+                        <p className="text-5xl font-bold text-[#202224]">XAU/USD</p>
                         <p className="text-[#7ED63F] text-xl font-bold mt-2">+1.05%</p>
                     </div>
                     <div className="col-span-1">
-                        <img src={arrow} alt="arrow" />
+                        <img className="w-24" src={arrow} alt="arrow" />
                     </div>
                 </div>
                 <div className="col-span-12 md:col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl py-4">
@@ -61,16 +61,16 @@ export default function GrowthAnalytics() {
                                     <th scope="col" className="py-3 text-left">
                                         No.
                                     </th>
-                                    <th scope="col" className="px-4 py-2">
+                                    <th scope="col" className="py-2">
                                         Date
                                     </th>
-                                    <th scope="col" className="px-4 py-2">
+                                    <th scope="col" className="px-3">
                                         Asset
                                     </th>
-                                    <th scope="col" className="px-4 py-2">
+                                    <th scope="col" className="px-3">
                                         Position
                                     </th>
-                                    <th scope="col" className="px-4 py-2">
+                                    <th scope="col" className="px-3">
                                         Growth
                                     </th>
                                 </tr>
@@ -78,20 +78,20 @@ export default function GrowthAnalytics() {
                             <tbody>
                                 {
                                     recentTradeActivity.map((item, index) =>
-                                        <tr key={item.id} className={`border-stone-800 ${index != recentTradeActivity.length - 1 ? "border-b" : ""}`}>
+                                        <tr key={item.id} className={`border-stone-800 text-xs ${index != recentTradeActivity.length - 1 ? "border-b" : ""}`}>
                                             <th scope="row" className="pr-6 py-2 font-medium text-secondary whitespace-nowrap dark:text-white">
                                                 {item.id}
                                             </th>
-                                            <td className="md:px-4 py-3">
+                                            <td className="md:w-20 py-3">
                                                 {item.date}
                                             </td>
-                                            <td className="px-4 py-3">
+                                            <td className="py-3">
                                                 {item.asset}
                                             </td>
-                                            <td className="px-4 py-3">
+                                            <td className="py-3">
                                                 {item.position}
                                             </td>
-                                            <td className="px-4 py-3">
+                                            <td className="py-3">
                                                 {item.growth}
                                             </td>
                                         </tr>
@@ -104,7 +104,7 @@ export default function GrowthAnalytics() {
                 <div className="col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl">
                     <h3 className="pl-5 mb-3 font-semibold mt-5">Recent Trade Activity</h3>
                     <div className="grid grid-cols-12 gap-6">
-                        <div className="col-span-12 md:col-span-10">
+                        <div className="col-span-12">
                             <PieChart />
                         </div>
                     </div>
