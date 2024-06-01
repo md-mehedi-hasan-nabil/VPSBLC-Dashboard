@@ -1,4 +1,5 @@
 import arrow from "../assets/arrow-up-bold.svg"
+import AreaChart from "./AreaChart"
 import PieChart from "./PieChart"
 
 const recentTradeActivity = [
@@ -41,16 +42,19 @@ export default function GrowthAnalytics() {
             </h2>
 
             <div className="grid grid-cols-12 gap-6 mt-5">
-                <div className="col-span-12 lg:col-span-4 flex justify-between border border-stone-800 rounded-2xl p-5">
-                    <div className="col-span-2">
-                        <h3 className="text-xl font-medium text-[#202224]">Most Recent Trade</h3>
-                        <h2 className="text-[22px] text-[#202224] my-3 font-bold">LONG POSITION ON:</h2>
-                        <p className="text-5xl font-bold text-[#202224]">XAU/USD</p>
-                        <p className="text-[#7ED63F] text-xl font-bold mt-2">+1.05%</p>
+                <div className="relative overflow-hidden col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl p-5">
+                    <div className="flex gap-6">
+                        <div className="col-span-2">
+                            <h3 className="text-xl font-medium text-[#202224]">Most Recent Trade</h3>
+                            <h2 className="text-[22px] text-[#202224] my-3 font-bold">LONG POSITION ON:</h2>
+                            <p className="text-5xl font-bold text-[#202224]">XAU/USD</p>
+                            <p className="text-[#7ED63F] text-xl font-bold mt-2">+1.05%</p>
+                        </div>
+                        <div className="col-span-1">
+                            <img className="w-24" src={arrow} alt="arrow" />
+                        </div>
                     </div>
-                    <div className="col-span-1">
-                        <img className="w-24" src={arrow} alt="arrow" />
-                    </div>
+                    <AreaChart />
                 </div>
                 <div className="col-span-12 md:col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl py-4">
                     <h3 className="pl-5 mb-3 font-semibold">Recent Trade Activity</h3>
