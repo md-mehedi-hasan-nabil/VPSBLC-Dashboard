@@ -104,7 +104,7 @@ export default function GrowthAnalytics() {
                 <div className="col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl">
                     <h3 className="pl-5 mb-3 font-semibold mt-5">Recent Trade Activity</h3>
                     <div className="grid grid-cols-12 gap-6">
-                        <div className="col-span-10">
+                        <div className="col-span-12 md:col-span-10">
                             <PieChart />
                         </div>
                     </div>

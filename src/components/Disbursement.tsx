@@ -9,6 +9,10 @@ interface IDisbursementOverview {
     "Next Disbursement": string;
     "Next Disbursement Amount": string;
     "Earnings to Date": string;
+
+    "Next Disbursement:": string;
+    "Next Disbursement Amount:": string;
+    "Earnings to Date:": string;
 }
 
 interface IItem {
@@ -66,8 +70,8 @@ export default function Disbursement() {
     }, [disbursementOverview, isSuccessDisbursementOverview])
 
     const removeQuotes = (value: string) => {
-        value = value.replace("\"", '');
-        const result = value.replace("\"", '');
+        value = value?.replace("\"", '');
+        const result = value?.replace("\"", '');
         return result
     };
 

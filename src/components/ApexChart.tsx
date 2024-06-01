@@ -73,8 +73,6 @@ export default function ApexChart() {
                 xCategoriesValues.push(item.disbursement);
             });
 
-
-
             const max = Math.max(...disbursements_paid_list)
             const list: number[] = []
             disbursements_paid_list.forEach(value => {
