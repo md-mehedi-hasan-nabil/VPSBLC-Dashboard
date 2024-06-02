@@ -36,7 +36,7 @@ export default function RecentTradeActivity() {
                 <td className="py-3">
                     {item.asset}
                 </td>
-                <td className="py-3">
+                <td className="py-3 px-3">
                     {item.position}
                 </td>
                 <td className="py-3">
@@ -50,7 +50,7 @@ export default function RecentTradeActivity() {
             <h3 className="text-xl pl-5 mb-3 font-semibold text-primary">Recent Trade Activity</h3>
             <div className="px-5 overflow-x-auto">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead className="text-xs text-[#202224] uppercase">
+                    <thead className="text-xs text-[#202224] uppercase bg-[#F9FAFB]">
                         <tr>
                             <th scope="col" className="py-3 text-left">
                                 No.
@@ -58,7 +58,7 @@ export default function RecentTradeActivity() {
                             <th scope="col" className="py-2">
                                 Date
                             </th>
-                            <th scope="col" className="px-3">
+                            <th scope="col" className="pr-3">
                                 Asset
                             </th>
                             <th scope="col" className="px-3">
@@ -69,7 +69,7 @@ export default function RecentTradeActivity() {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="[&>*:nth-child(even)]:bg-[#F9FAFB]">
                         {content}
                     </tbody>
                 </table>

@@ -11,3 +11,10 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+.recent-trade-bg-image {
+  background-image: url("./assets/arrow-up-bold.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+}

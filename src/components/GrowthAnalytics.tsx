@@ -1,4 +1,3 @@
-import arrow from "../assets/arrow-up-bold.svg"
 import LineChart from "./LineChart"
 import PieChart from "./PieChart"
 import RecentTradeActivity from "./RecentTradeActivity"
@@ -13,13 +12,7 @@ export default function GrowthAnalytics() {
             </h2>
 
             <div className="grid grid-cols-12 gap-6 mt-5">
-                <div className="relative overflow-hidden col-span-12 lg:col-span-4 px-5 pt-5 rounded-2xl border-t-8 border-[#252990] bg-white"
-                style={{
-                    backgroundImage: `url(${arrow})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "right center"
-                }}
-                >
+                <div className="relative overflow-hidden col-span-12 lg:col-span-4 px-5 pt-5 rounded-2xl border-t-8 border-[#252990] bg-white recent-trade-bg-image">
                     <div className="flex gap-6 md:absolute top-3 z-10">
                         <div className="col-span-2">
                             <h3 className="text-xl font-medium text-primary">Most Recent Trade</h3>
