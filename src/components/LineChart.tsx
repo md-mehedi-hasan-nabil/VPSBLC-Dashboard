@@ -1,7 +1,7 @@
 import { ApexOptions } from 'apexcharts';
 import ReactApexChart from 'react-apexcharts';
 
-export default function AreaChart() {
+export default function LineChart() {
     const options: ApexOptions = {
         chart: {
             type: 'line',
@@ -46,7 +46,7 @@ export default function AreaChart() {
     ]
 
     return (
-        <div className='md:absolute md:scale-y-75 left-0 right-0 -bottom-16 w-full -z-10'>
+        <div className='md:mt-12 md:-mb-8 md:scale-y-75'>
             <ReactApexChart options={options} series={series} />
         </div>
     );

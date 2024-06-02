@@ -64,7 +64,7 @@ export default function Documentation() {
                     {
                         documentationInfo && documentationInfo.map((item) =>
                             <div key={item.id} className="col-span-12 md:col-span-6 lg:col-span-4">
-                                <div className="flex flex-col justify-center gap-6 bg-white rounded-2xl p-6 border-t-8 border-[#252990]">
+                                <div className="flex flex-col justify-center gap-6 bg-white p-6 rounded-2xl border-t-8 border-[#252990]">
                                     <h2 className="text-sm text-[#343C6A] font-semibold text-center">
                                         {item.name}
                                     </h2>
@@ -72,7 +72,7 @@ export default function Documentation() {
                                         {item.icon}
                                     </div>
                                     <div className="text-center">
-                                        <a href={item.link} className="text-white bg-[#263ca2] hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">
+                                        <a href={item.link} className="text-white bg-[#263ca2] hover:bg-[#2d47be] focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">
                                             View
                                         </a>
                                     </div>

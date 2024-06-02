@@ -15,7 +15,7 @@ export default {
       white: colors.white,
       stone: colors.stone,
       primary: "#262F96",
-      secondary: "#202224",
+      secondary: "#4CAF50",
     },
     extend: {
       boxShadow: {

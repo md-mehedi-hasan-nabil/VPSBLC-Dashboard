@@ -1,37 +1,8 @@
 import arrow from "../assets/arrow-up-bold.svg"
-import AreaChart from "./AreaChart"
+import LineChart from "./LineChart"
 import PieChart from "./PieChart"
-
-const recentTradeActivity = [
-    {
-        id: "01",
-        date: "12-12-2024",
-        asset: "Asset",
-        position: "Position",
-        growth: "Growth"
-    },
-    {
-        id: "02",
-        date: "12-12-2024",
-        asset: "Asset",
-        position: "Position",
-        growth: "Growth"
-    },
-    {
-        id: "03",
-        date: "12-12-2024",
-        asset: "Asset",
-        position: "Position",
-        growth: "Growth"
-    },
-    {
-        id: "04",
-        date: "12-12-2024",
-        asset: "Asset",
-        position: "Position",
-        growth: "Growth"
-    },
-]
+import RecentTradeActivity from "./RecentTradeActivity"
+import gbpaud from "../assets/gbpaud.svg"
 
 export default function GrowthAnalytics() {
 
@@ -42,71 +13,31 @@ export default function GrowthAnalytics() {
             </h2>
 
             <div className="grid grid-cols-12 gap-6 mt-5">
-                <div className="relative overflow-hidden col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl p-5">
-                    <div className="flex gap-6">
+                <div className="relative overflow-hidden col-span-12 lg:col-span-4 px-5 pt-5 rounded-2xl border-t-8 border-[#252990] bg-white"
+                style={{
+                    backgroundImage: `url(${arrow})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right center"
+                }}
+                >
+                    <div className="flex gap-6 md:absolute top-3 z-10">
                         <div className="col-span-2">
-                            <h3 className="text-xl font-medium text-[#202224]">Most Recent Trade</h3>
-                            <h2 className="text-[22px] text-[#202224] my-3 font-bold">LONG POSITION ON:</h2>
-                            <p className="text-5xl font-bold text-[#202224]">XAU/USD</p>
+                            <h3 className="text-xl font-medium text-primary">Most Recent Trade</h3>
+                            <h2 className="text-[22px] text-[#4CAF50] my-2 font-bold">LONG POSITION ON:</h2>
+                            <div className="flex gap-3">
+                                <img src={gbpaud} alt="gbpaud" />
+                                <p className="text-[42px] font-bold text-primary">XAU/USD</p>
+                            </div>
                             <p className="text-[#7ED63F] text-xl font-bold mt-2">+1.05%</p>
                         </div>
-                        <div className="col-span-1">
-                            <img className="w-24" src={arrow} alt="arrow" />
-                        </div>
                     </div>
-                    <AreaChart />
+                    <LineChart />
                 </div>
-                <div className="col-span-12 md:col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl py-4">
-                    <h3 className="pl-5 mb-3 font-semibold">Recent Trade Activity</h3>
-                    <div className="px-5 overflow-x-auto">
-                        <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                            <thead className="text-xs text-secondary uppercase">
-                                <tr>
-                                    <th scope="col" className="py-3 text-left">
-                                        No.
-                                    </th>
-                                    <th scope="col" className="py-2">
-                                        Date
-                                    </th>
-                                    <th scope="col" className="px-3">
-                                        Asset
-                                    </th>
-                                    <th scope="col" className="px-3">
-                                        Position
-                                    </th>
-                                    <th scope="col" className="px-3">
-                                        Growth
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    recentTradeActivity.map((item, index) =>
-                                        <tr key={item.id} className={`border-stone-800 text-xs ${index != recentTradeActivity.length - 1 ? "border-b" : ""}`}>
-                                            <th scope="row" className="pr-6 py-2 font-medium text-secondary whitespace-nowrap dark:text-white">
-                                                {item.id}
-                                            </th>
-                                            <td className="md:w-20 py-3">
-                                                {item.date}
-                                            </td>
-                                            <td className="py-3">
-                                                {item.asset}
-                                            </td>
-                                            <td className="py-3">
-                                                {item.position}
-                                            </td>
-                                            <td className="py-3">
-                                                {item.growth}
-                                            </td>
-                                        </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="col-span-12 md:col-span-12 lg:col-span-4 rounded-2xl border-t-8 border-[#252990] py-4 bg-white">
+                    <RecentTradeActivity />
                 </div>
-                <div className="col-span-12 lg:col-span-4 border border-stone-800 rounded-2xl">
-                    <h3 className="pl-5 mb-3 font-semibold mt-5">Recent Trade Activity</h3>
+                <div className="col-span-12 lg:col-span-4 rounded-2xl border-t-8 border-[#252990] bg-white">
+                    <h3 className="pl-5 mb-3 font-semibold mt-5 text-primary text-xl">Recent Trade Activity</h3>
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12">
                             <PieChart />
