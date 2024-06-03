@@ -5,19 +5,9 @@ export default function PieChart() {
     const options: ApexOptions = {
         chart: {
             type: 'donut',
+            // height: 400
         },
         colors: ['#4CAF50', '#F1F9F1'],
-        responsive: [{
-            breakpoint: 1920,
-            options: {
-                chart: {
-                    // width: 500
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }],
         labels: ['Active models', 'Deactivated models'],
         dataLabels: {
             style: {
@@ -43,6 +33,9 @@ export default function PieChart() {
             marker: {
                 show: false,
             },
+        },
+        legend: {
+            show: false
         }
     };
 
