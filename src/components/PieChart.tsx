@@ -6,7 +6,7 @@ export default function PieChart() {
         chart: {
             type: 'donut',
         },
-        colors: ['#4CAF50', '#808080'],
+        colors: ['#4CAF50', '#F1F9F1'],
         responsive: [{
             breakpoint: 480,
             options: {
@@ -26,7 +26,7 @@ export default function PieChart() {
             enabled: false
         },
         tooltip: {
-            theme: 'dark', 
+            theme: 'light', 
             style: {
                 fontSize: '12px',  
                 fontFamily: 'Poppins, sans-serif',

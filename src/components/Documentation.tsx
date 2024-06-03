@@ -72,7 +72,7 @@ export default function Documentation() {
                                         {item.icon}
                                     </div>
                                     <div className="text-center">
-                                        <a href={item.link} className="text-white bg-[#263ca2] hover:bg-[#2d47be] focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">
+                                        <a target="_blank" href={item.link} className="text-white bg-[#263ca2] hover:bg-[#2d47be] focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">
                                             View
                                         </a>
                                     </div>
