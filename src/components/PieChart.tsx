@@ -6,7 +6,7 @@ export default function PieChart() {
         chart: {
             type: 'donut',
         },
-        colors: ['#4CAF50', '#F9FAFB'],
+        colors: ['#4CAF50', '#808080'],
         responsive: [{
             breakpoint: 480,
             options: {
@@ -20,16 +20,16 @@ export default function PieChart() {
         }],
         labels: ['Active models', 'Deactivated models'],
         dataLabels: {
-            // style: {
-            //     colors: ['#000000'] 
-            // }
+            style: {
+                colors: ['#ffffff'] 
+            },
             enabled: false
         },
         tooltip: {
-            theme: 'light', 
+            theme: 'dark', 
             style: {
                 fontSize: '12px',  
-                fontFamily: 'Poppins, sans-serif'
+                fontFamily: 'Poppins, sans-serif',
             },
             x: {
                 show: true,

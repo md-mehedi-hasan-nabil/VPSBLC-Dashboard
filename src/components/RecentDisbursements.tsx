@@ -63,7 +63,7 @@ export default function RecentDisbursements() {
                             <th scope="col" className="px-6 py-3">
                                 Disbursement Title
                             </th>
-                            <th scope="col" className="px-5 py-2">
+                            <th scope="col" className="pr-5 py-2">
                                 Date Paid
                             </th>
                             <th scope="col" className="px-5 py-2">
