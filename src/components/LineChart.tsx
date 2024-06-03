@@ -13,6 +13,7 @@ export default function LineChart() {
         dataLabels: {
             enabled: false
         },
+        colors: ["#4CAF50"],
         stroke: {
             curve: 'smooth'
         },

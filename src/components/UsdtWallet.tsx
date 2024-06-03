@@ -55,7 +55,7 @@ export default function UsdtWallet() {
                 <div>
                     <FcDisclaimer className="text-5xl" />
                 </div>
-                <p className="text-xl text-[#343C6A]"><span className="text-[#F44336] font-bold">WARNING:</span>
+                <p className="text-xl text-[#343C6A]"><span className="text-[#F44336] font-bold">WARNING: </span>
                     Please ensure that the USDT-ETH wallet address above has been verified and is RWA to receive USDT ERC20 tokens. Sending crypto to the incorrect address will result in a <span className="font-bold">loss of funds.</span></p>
             </div>
         </div>

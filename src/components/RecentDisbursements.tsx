@@ -33,7 +33,7 @@ export default function RecentDisbursements() {
     if (isSuccess) {
         content = recentDisbursementsData.map((item: RecentDisbursement) =>
             <tr key={item.most_recent_disbursement} className="bg-white border-b">
-                <th scope="row" className="px-6 py-2 font-medium text-secondary whitespace-nowrap dark:text-white">
+                <th scope="row" className="px-6 py-2 font-medium text-[#202224] whitespace-nowrap dark:text-white">
                     {item.disbursement_title}
                 </th>
                 <td className="py-4">
@@ -58,7 +58,7 @@ export default function RecentDisbursements() {
 
             <div className="relative overflow-x-auto">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead className="text-xs text-secondary uppercase bg-gray-50">
+                    <thead className="text-xs text-[#202224] uppercase bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Disbursement Title

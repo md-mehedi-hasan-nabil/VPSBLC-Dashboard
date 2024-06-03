@@ -30,7 +30,7 @@ export default function GrowthAnalytics() {
                     <RecentTradeActivity />
                 </div>
                 <div className="col-span-12 lg:col-span-4 rounded-2xl border-t-8 border-[#252990] bg-white">
-                    <h3 className="pl-5 mb-3 font-semibold mt-5 text-primary text-xl">Recent Trade Activity</h3>
+                    <h3 className="pl-5 mb-3 font-semibold mt-5 text-primary text-xl">Current Disbursement Cycle</h3>
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12">
                             <PieChart />
