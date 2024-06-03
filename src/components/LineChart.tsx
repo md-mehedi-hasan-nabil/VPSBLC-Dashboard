@@ -30,6 +30,7 @@ export default function LineChart() {
             }
         },
         tooltip: {
+            enabled: false,
             x: {
                 format: 'dd/MM/yy HH:mm'
             },
