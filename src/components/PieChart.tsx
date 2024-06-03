@@ -8,10 +8,10 @@ export default function PieChart() {
         },
         colors: ['#4CAF50', '#F1F9F1'],
         responsive: [{
-            breakpoint: 480,
+            breakpoint: 1920,
             options: {
                 chart: {
-                    width: 200
+                    // width: 500
                 },
                 legend: {
                     position: 'bottom'
@@ -21,23 +21,23 @@ export default function PieChart() {
         labels: ['Active models', 'Deactivated models'],
         dataLabels: {
             style: {
-                colors: ['#ffffff'] 
+                colors: ['#ffffff']
             },
             enabled: false
         },
         tooltip: {
-            theme: 'light', 
+            theme: 'light',
             style: {
-                fontSize: '12px',  
+                fontSize: '12px',
                 fontFamily: 'Poppins, sans-serif',
             },
             x: {
                 show: true,
-                format: 'dd MMM', 
+                format: 'dd MMM',
             },
             y: {
                 formatter: function (val) {
-                    return val + " models"; 
+                    return val + " models";
                 }
             },
             marker: {

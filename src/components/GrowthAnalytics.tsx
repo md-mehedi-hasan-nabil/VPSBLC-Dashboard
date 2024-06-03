@@ -30,10 +30,20 @@ export default function GrowthAnalytics() {
                     <RecentTradeActivity />
                 </div>
                 <div className="col-span-12 lg:col-span-4 rounded-2xl border-t-8 border-[#252990] bg-white">
-                    <h3 className="pl-5 mb-3 font-semibold mt-5 text-primary text-xl">Current Disbursement Cycle</h3>
-                    <div className="grid grid-cols-12 gap-6">
-                        <div className="col-span-12">
+                    <h3 className="pl-5 mb-3 font-semibold mt-5 text-primary text-xl">Cycle Completion</h3>
+                    <div className="grid grid-cols-12">
+                        <div className="col-span-12 md:col-span-8">
                             <PieChart />
+                        </div>
+                        <div className="col-span-12 md:col-span-4 flex flex-col gap-6 mt-5 md:mt-0">
+                            <div className="border-l-4 border-[#459d4b] pl-4">
+                                <h3 className="text-sm font-semibold">Deactivated models</h3>
+                                <p className="text-2xl mt-1">2%</p>
+                            </div>
+                            <div className="border-l-4 border-[#4153F6] pl-4">
+                                <h3 className="text-sm font-semibold">Active models</h3>
+                                <p className="text-2xl mt-1">13%</p>
+                            </div>
                         </div>
                     </div>
                 </div>
