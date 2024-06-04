@@ -1,6 +1,5 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import React from 'react';
 
 export default function PieChart() {
     const total = 100;
