@@ -38,7 +38,7 @@ export default function GrowthAnalytics() {
                           
                             <div className="border-l-4 border-[#4caf50] pl-4">
                                 <h3 className="text-sm font-semibold text-[#0A112F]">Cycle Completion</h3>
-                                <p className="text-2xl font-bold mt-1">13%</p>
+                                <p className="text-3xl md:text-[40px] font-bold mt-1">87%</p>
                             </div>
                         </div>
                     </div>

@@ -1,48 +1,41 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
+import React from 'react';
 
 export default function PieChart() {
-    const total = 100;  // Assuming the total is 100 for a complete donut
-    const cycleCompletion = 13;
+    const total = 100;
+    const cycleCompletion = 87;
     const remainder = total - cycleCompletion;
-
     const options: ApexOptions = {
         chart: {
             type: 'donut',
         },
         colors: ['#4CAF50', '#F1F9F1'],
-        labels: ['Remaining', 'Cycle Completion'],
+        labels: ['Cycle Completion', 'Remaining'],
         dataLabels: {
             style: {
                 colors: ['#ffffff']
             },
             enabled: false
         },
-        tooltip: {
-            theme: 'light',
-            style: {
-                fontSize: '12px',
-                fontFamily: 'Poppins, sans-serif',
-            },
-            x: {
-                show: true,
-                format: 'dd MMM',
-            },
-            y: {
-                formatter: function (val) {
-                    return val + " models";
-                }
-            },
-            marker: {
-                show: false,
-            },
-        },
         legend: {
             show: false
+        },
+        tooltip: {
+            custom: function ({ series, seriesIndex, w }) {
+                if (seriesIndex === 0) {
+                    return '<div class="p-2">' +
+                        '<span>' + w.config.labels[seriesIndex] + ': ' + series[seriesIndex] + '% </span>' +
+                        '</div>'
+                }
+                else {
+                    return '<span class="hidden"><span>'
+                }
+            }
         }
     };
 
-    const series = [remainder, cycleCompletion];
+    const series = [cycleCompletion, remainder];
 
     return (
         <div className='w-full'>
