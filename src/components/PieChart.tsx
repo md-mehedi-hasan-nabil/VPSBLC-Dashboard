@@ -39,7 +39,7 @@ export default function PieChart() {
         }
     };
 
-    const series = [13, 2];
+    const series = [100-13, 13];
 
     return (
         <div className='w-full'>
