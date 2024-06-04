@@ -2,13 +2,16 @@ import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
 export default function PieChart() {
+    const total = 100;  // Assuming the total is 100 for a complete donut
+    const cycleCompletion = 13;
+    const remainder = total - cycleCompletion;
+
     const options: ApexOptions = {
         chart: {
             type: 'donut',
-            // height: 400
         },
         colors: ['#4CAF50', '#F1F9F1'],
-        labels: ['Active models', 'Deactivated models'],
+        labels: ['Remaining', 'Cycle Completion'],
         dataLabels: {
             style: {
                 colors: ['#ffffff']
@@ -39,7 +42,7 @@ export default function PieChart() {
         }
     };
 
-    const series = [100-13, 13];
+    const series = [remainder, cycleCompletion];
 
     return (
         <div className='w-full'>
