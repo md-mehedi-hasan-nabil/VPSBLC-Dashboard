@@ -24,7 +24,7 @@ export default function ApexChart() {
             }
 
             return await response.json()
-        },
+        }
     })
 
     const { data: vpsblcInfo, isSuccess: isSuccessVpsblcInfo } = useQuery({
@@ -40,28 +40,11 @@ export default function ApexChart() {
         },
     })
 
-    const [dataLineChart, setDataLineChart] = useState<number[]>([]);
     const [dataLineCharPercentagest, setDataLineChartPercentages] = useState<number[]>([]);
-    // const [dataColumnChart, setDataColumnChart] = useState<number[]>([]);
-    // const [xCategories, setXCategories] = useState<string[]>([]);
     const [disbursementsPaid, setDisbursementsPaid] = useState<number[]>([]);
-    console.log(dataLineChart)
+
+
     useEffect(() => {
-        function convertValues(values: number[], percentages: number[]): number[] {
-            if (values.length !== percentages.length) {
-                return []
-            }
-
-            const convertedValues: number[] = [];
-
-            for (let i = 0; i < values.length; i++) {
-                const convertedValue = values[i] * (percentages[i] / 100);
-                convertedValues.push(convertedValue);
-            }
-
-            return convertedValues;
-        }
-
         if (isSuccessDisbursementInfo && isSuccessVpsblcInfo) {
             const lineCharts: number[] = [];
             const disbursements_paid_list: number[] = [];
@@ -80,20 +63,10 @@ export default function ApexChart() {
                 list.push(exact_value)
             })
 
-            const result = convertValues(disbursements_paid_list, lineCharts)
-            // console.log(disbursements_paid_list)
-            // console.log(lineCharts)
-            // console.log(result)
-
             setDisbursementsPaid(disbursements_paid_list);
-            setDataLineChart(result)
             setDataLineChartPercentages(lineCharts)
         }
     }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo]);
-
-    // console.log(dataLineChart)
-    // console.log(disbursementsPaid)
-    // console.log(dataLineCharPercentagest)
 
     const chartOptions: ApexOptions = {
         series: [
@@ -181,7 +154,6 @@ export default function ApexChart() {
     return (
         <div id="growth-analytics" className='pt-4' >
             <div className="overflow-hidden">
-                {/* <h2 className="my-5 text-3xl text-[#343C6A] font-semibold">DISBURSEMENT OVERVIEW</h2> */}
                 <div className='bg-white p-4 rounded-2xl'>
                     <div className='flex items-center gap-4'>
                         <FcCurrencyExchange className='text-2xl md:text-5xl' />
