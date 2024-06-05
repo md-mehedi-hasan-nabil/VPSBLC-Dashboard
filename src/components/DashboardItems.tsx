@@ -9,7 +9,7 @@ interface IVPSBLCInformation {
     "VPSBLC Face Value": string;
     "VPSBLC Purchase Status": string;
     "VPSBLC Funding Status": string;
-    "Trace Status": string;
+    "Trade Status": string;
 }
 
 interface IItem {
@@ -53,7 +53,7 @@ export default function DashboardItems() {
                 {
                     id: 3,
                     name: "VPSBLC TRADING STATUS",
-                    title: (vpsblcInfo as IVPSBLCInformation)["Trace Status"],
+                    title: (vpsblcInfo as IVPSBLCInformation)["Trade Status"],
                     icon: trade as string
                 }
             ]
@@ -72,7 +72,7 @@ export default function DashboardItems() {
                         <div className="flex md:flex-col lg:flex-row justify-between items-center p-4">
                             <div>
                                 {
-                                    (item.title.includes("COMPLETED") || item.title.includes("FUNDED") || item.title === "ACTIVE") ? <h2 className="text-xl lg:text-2xl font-bold text-[#4CAF50] lg:pr-10">
+                                    (item?.title?.includes("COMPLETED") || item.title?.includes("FUNDED") || item?.title === "ACTIVE") ? <h2 className="text-xl lg:text-2xl font-bold text-[#4CAF50] lg:pr-10">
                                         {item.title}
                                     </h2> : <h2 className="text-xl lg:text-2xl font-bold text-[#ebbf2c] lg:pr-10">
                                         {item.title}

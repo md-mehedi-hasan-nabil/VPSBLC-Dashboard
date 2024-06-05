@@ -1,10 +1,14 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
-export default function PieChart() {
+export default function PieChart({ cycleCompletion }: {
+    cycleCompletion: number
+}) {
+
     const total = 100;
-    const cycleCompletion = 87;
+    // const cycleCompletion = 117.70; 
     const remainder = total - cycleCompletion;
+
     const options: ApexOptions = {
         chart: {
             type: 'donut',
@@ -24,11 +28,12 @@ export default function PieChart() {
             custom: function ({ series, seriesIndex, w }) {
                 if (seriesIndex === 0) {
                     return '<div class="p-2">' +
+                        '<span>' + w.config.labels[seriesIndex] + ': ' + series[seriesIndex].toFixed(2) + '% </span>' +
+                        '</div>'
+                } else {
+                    return '<div class="p-2 hidden">' +
                         '<span>' + w.config.labels[seriesIndex] + ': ' + series[seriesIndex] + '% </span>' +
                         '</div>'
-                }
-                else {
-                    return '<span class="hidden"><span>'
                 }
             }
         }

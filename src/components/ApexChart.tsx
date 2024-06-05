@@ -69,7 +69,7 @@ export default function ApexChart() {
 
             disbursementInfo.forEach((item: Disbursement) => {
                 disbursements_paid_list.push(Number(item.disbursements_paid));
-                lineCharts.push(Number(item.line_chart.replace("%", "")));
+                lineCharts.push(Number(item.line_chart?.replace("%", "")));
                 xCategoriesValues.push(item.disbursement);
             });
 
