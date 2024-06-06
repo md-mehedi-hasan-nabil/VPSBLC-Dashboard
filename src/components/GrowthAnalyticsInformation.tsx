@@ -41,7 +41,7 @@ export default function GrowthAnalyticsInformation() {
                 setBgArrow("recent-trade-up-bg-image")
             } else {
                 setData([10, 12, 6, 17, 10, 15, 8])
-                setColors(["#3c3d3d"])
+                setColors(["#FF0000"])
                 setBgArrow("recent-trade-down-bg-image")
             }
         }
@@ -67,7 +67,7 @@ export default function GrowthAnalyticsInformation() {
                 (growthValue && 0 < growthValue) ? <p className="text-[#7ED63F] text-xl font-bold mt-2">
                     {growthValue}%
                 </p> :
-                    <p className="text-[#3c3d3d] text-xl font-bold mt-2">
+                    <p className="text-[#FF0000] text-xl font-bold mt-2">
                         {growthValue}%
                     </p>
             }
