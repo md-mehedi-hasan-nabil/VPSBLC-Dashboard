@@ -13,9 +13,10 @@ interface IGrowthAnalytics {
 
 export default function GrowthAnalyticsInformation() {
     const [data, setData] = useState<number[]>([])
-    const [colors, setColors] = useState<string[]>([])
+    const [color, setColor] = useState<string>("")
     const [bgArrow, setBgArrow] = useState<string>("")
     const [growthValue, setGrowthValue] = useState<number>()
+    const [tradeDirection, setTradeDirection] = useState<string>("")
 
     const { data: analyticsInfo, isSuccess, isLoading } = useQuery({
         queryKey: ['analyticsInfo'],
@@ -33,19 +34,32 @@ export default function GrowthAnalyticsInformation() {
     useEffect(() => {
         if (isSuccess && analyticsInfo) {
             const growth = (analyticsInfo as IGrowthAnalytics)?.Growth.replace("%", "");
-            setGrowthValue(Number(growth))
 
-            if ((0 < Number(growth))) {
-                setData([31, 40, 28, 51, 42, 90, 70])
-                setColors(["#4CAF50"])
-                setBgArrow("recent-trade-up-bg-image")
-            } else {
+            setGrowthValue(Number(growth))
+            setTradeDirection((analyticsInfo)["Trade Direction"]?.toUpperCase())
+
+            if (tradeDirection === "SHORT") {
                 setData([10, 12, 6, 17, 10, 15, 8])
-                setColors(["#FF0000"])
+                setColor("#FF0000")
                 setBgArrow("recent-trade-down-bg-image")
+
+            } else {
+                setData([31, 40, 28, 51, 42, 90, 70])
+                setColor("#4CAF50")
+                setBgArrow("recent-trade-up-bg-image")
             }
+
+            // if ((0 < Number(growth))) {
+            //     setData([31, 40, 28, 51, 42, 90, 70])
+            //     setColor("#4CAF50")
+            //     setBgArrow("recent-trade-up-bg-image")
+            // } else {
+            //     setData([10, 12, 6, 17, 10, 15, 8])
+            //     setColor("#FF0000")
+            //     setBgArrow("recent-trade-down-bg-image")
+            // }
         }
-    }, [isSuccess, analyticsInfo])
+    }, [isSuccess, analyticsInfo, tradeDirection])
 
     let content;
 
@@ -54,9 +68,14 @@ export default function GrowthAnalyticsInformation() {
     } else if (isSuccess && analyticsInfo) {
         content = <>
             <h3 className="text-xl font-medium text-primary">Most Recent Trade</h3>
-            <h2 className="text-[22px] text-[#4CAF50] my-2 font-bold">
-                {(analyticsInfo as IGrowthAnalytics)["Trade Direction"]}
-            </h2>
+            {
+                tradeDirection === "SHORT" ? <h2 className="text-[22px] text-[#FF0000] my-2 font-bold">
+                    {tradeDirection} POSITION ON:
+                </h2> : <h2 className="text-[22px] text-[#4CAF50] my-2 font-bold">
+                    {tradeDirection} POSITION ON:
+                </h2>
+            }
+
             <div className="flex gap-3">
                 <img src={gbpaud} alt="gbpaud" />
                 <p className="text-[42px] font-bold text-primary">
@@ -64,10 +83,10 @@ export default function GrowthAnalyticsInformation() {
                 </p>
             </div>
             {
-                (growthValue && 0 < growthValue) ? <p className="text-[#7ED63F] text-xl font-bold mt-2">
+                tradeDirection === "SHORT" ? <p className="text-[#FF0000] text-xl font-bold mt-2">
                     {growthValue}%
                 </p> :
-                    <p className="text-[#FF0000] text-xl font-bold mt-2">
+                    <p className="text-[#7ED63F] text-xl font-bold mt-2">
                         {growthValue}%
                     </p>
             }
@@ -84,7 +103,7 @@ export default function GrowthAnalyticsInformation() {
                     {content}
                 </div>
             </div>
-            <LineChart data={data} colors={colors} />
+            <LineChart data={data} color={color} />
         </div>
     )
 }

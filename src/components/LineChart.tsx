@@ -1,9 +1,9 @@
 import { ApexOptions } from 'apexcharts';
 import ReactApexChart from 'react-apexcharts';
 
-export default function LineChart({ data, colors }: {
+export default function LineChart({ data, color }: {
     data: number[];
-    colors: string[]
+    color: string;
 }) {
     const options: ApexOptions = {
         chart: {
@@ -16,7 +16,7 @@ export default function LineChart({ data, colors }: {
         dataLabels: {
             enabled: false
         },
-        colors,
+        colors: [color],
         stroke: {
             curve: 'smooth'
         },
