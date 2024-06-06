@@ -1,7 +1,10 @@
 import { ApexOptions } from 'apexcharts';
 import ReactApexChart from 'react-apexcharts';
 
-export default function LineChart() {
+export default function LineChart({ data, colors }: {
+    data: number[];
+    colors: string[]
+}) {
     const options: ApexOptions = {
         chart: {
             type: 'line',
@@ -13,7 +16,7 @@ export default function LineChart() {
         dataLabels: {
             enabled: false
         },
-        colors: ["#4CAF50"],
+        colors,
         stroke: {
             curve: 'smooth'
         },
@@ -40,15 +43,15 @@ export default function LineChart() {
     const series = [
         {
             name: 'series1',
-            data: [31, 40, 28, 51, 42, 90, 10],
+            data,
             stroke: {
-                show: false 
+                show: false
             }
         },
     ]
 
     return (
-        <div className='md:mt-12 md:-mb-8 md:scale-y-75'>
+        <div className='md:mt-14 md:-mb-10 scale-y-75'>
             <ReactApexChart options={options} series={series} />
         </div>
     );

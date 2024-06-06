@@ -12,8 +12,15 @@ body {
   background-position: center;
 }
 
-.recent-trade-bg-image {
+.recent-trade-up-bg-image {
   background-image: url("./assets/arrow-up-bold.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+}
+
+.recent-trade-down-bg-image {
+  background-image: url("./assets/arrow-down-bold.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right center;
