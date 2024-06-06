@@ -83,10 +83,11 @@ export default function GrowthAnalyticsInformation() {
                 </p>
             </div>
             {
-                tradeDirection === "SHORT" ? <p className="text-[#FF0000] text-xl font-bold mt-2">
-                    {growthValue}%
-                </p> :
+                growthValue && 0 < growthValue ?
                     <p className="text-[#7ED63F] text-xl font-bold mt-2">
+                        +{growthValue}%
+                    </p> :
+                    <p className="text-[#FF0000] text-xl font-bold mt-2">
                         {growthValue}%
                     </p>
             }
