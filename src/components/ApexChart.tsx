@@ -153,6 +153,7 @@ export default function ApexChart() {
             max: Math.max(...disbursementsPaid)+1000,
             labels: {
                 formatter: (value: number) => {
+                    console.log(value)
                     if (value === 0) {
                         return "$" + value;
                     } else if (value > 0 && value < 1000) {
@@ -163,7 +164,6 @@ export default function ApexChart() {
                 }
             }
         }
-
     };
 
     return (
@@ -172,7 +172,7 @@ export default function ApexChart() {
                 <div className='bg-white p-4 rounded-2xl'>
                     <div className='flex items-center gap-4'>
                         <FcCurrencyExchange className='text-2xl md:text-5xl' />
-                        <p className='text-2xl'>Trade Performance</p>
+                        <p className='text-2xl'>Program Performance</p>
                     </div>
                     <ReactApexChart options={chartOptions} series={chartOptions.series} type="line" height={350} />
                 </div>
