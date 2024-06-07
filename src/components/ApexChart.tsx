@@ -150,18 +150,20 @@ export default function ApexChart() {
         },
         yaxis: {
             min: 0,
-            max: Math.max(...disbursementsPaid),
-            // tickAmount: 20,
+            max: Math.max(...disbursementsPaid)+1000,
             labels: {
                 formatter: (value: number) => {
-                    if (value > 900) {
-                        return "$"+ (value / 1000) + "K"
+                    if (value === 0) {
+                        return "$" + value;
+                    } else if (value > 0 && value < 1000) {
+                        return "$" + value;
                     } else {
-                        return value.toString()
+                        return "$" + ((value / 1000) * 2) + "K";
                     }
                 }
             }
-        },
+        }
+
     };
 
     return (
