@@ -155,7 +155,7 @@ export default function ApexChart() {
             labels: {
                 formatter: (value: number) => {
                     if (value > 900) {
-                        return (value / 1000) + "k $"
+                        return "$"+ (value / 1000) + "k"
                     } else {
                         return value.toString()
                     }
