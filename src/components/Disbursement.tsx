@@ -30,12 +30,12 @@ export default function Disbursement() {
     const { data: disbursementOverview, isSuccess: isSuccessDisbursementOverview } = useQuery({
         queryKey: ['disbursementOverview'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-overview',{
-                    headers: {
-                        'email': `${getAuth()}`,
-                        'Content-Type': 'application/json'
-                    }
+            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-overview', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
                 }
+            }
             )
 
             if (!response.ok) {
@@ -78,7 +78,7 @@ export default function Disbursement() {
 
     const removeQuotes = (value: string) => {
         value = value?.replace("\"", '');
-        const result = value?.replace("\"", '');
+        const result = value?.replace("\"", '')?.replace(",", "");
         return result
     };
 
