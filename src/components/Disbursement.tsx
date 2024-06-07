@@ -4,6 +4,7 @@ import overtime from "../assets/overtime.svg"
 import moneyTransfer from "../assets/money-transfer.svg"
 import bullish from "../assets/bullish.svg"
 import ApexChart from "./ApexChart";
+import { getAuth } from "../utils/getAuth";
 
 interface IDisbursementOverview {
     "Next Disbursement": string;
@@ -29,7 +30,13 @@ export default function Disbursement() {
     const { data: disbursementOverview, isSuccess: isSuccessDisbursementOverview } = useQuery({
         queryKey: ['disbursementOverview'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-overview')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-overview',{
+                    headers: {
+                        'email': `${getAuth()}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

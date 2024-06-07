@@ -3,6 +3,7 @@ import virtual from "../assets/virtual.svg"
 import trade from "../assets/trade.svg"
 import { useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
+import { getAuth } from "../utils/getAuth"
 
 interface IVPSBLCInformation {
     "VPSBLC Purchase Price": string;
@@ -25,7 +26,14 @@ export default function DashboardItems() {
     const { data: vpsblcInfo, isSuccess: isSuccessVpsblcInfo } = useQuery({
         queryKey: ['vpsblcInfo'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/vpsblc-info')
+            const email = getAuth()
+
+            const response = await fetch(import.meta.env.VITE_API_URL + '/vpsblc-info', {
+                headers: {
+                    'email': `${email}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

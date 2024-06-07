@@ -3,6 +3,7 @@ import RecentTradeActivity from "./RecentTradeActivity"
 import { useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 import GrowthAnalyticsInformation from "./GrowthAnalyticsInformation"
+import { getAuth } from "../utils/getAuth"
 
 export default function GrowthAnalytics() {
     const [cycleCompletion, setCycleCompletion] = useState(0)
@@ -10,7 +11,12 @@ export default function GrowthAnalytics() {
     const { data: disbursementCycle, isSuccess: isSuccessDisbursementCycle } = useQuery({
         queryKey: ['disbursementCycle'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-cycle')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-cycle', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

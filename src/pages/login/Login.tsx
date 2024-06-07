@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Login() {
     e.preventDefault()
 
     const data = {
-      username,
+      email,
       password
     }
 
@@ -37,7 +37,7 @@ export default function Login() {
         if (data.success) {
           toast.success("Login successfull.")
           navigate("/dashboard")
-          localStorage.setItem("username", data?.username)
+          localStorage.setItem("email", data?.username)
         } else {
           toast.error("Please correct username and password.")
         }
@@ -50,23 +50,23 @@ export default function Login() {
   return (
     <section className="h-screen flex justify-center items-center background-image">
       <div className="w-full">
-        <form className="max-w-96 mx-auto p-6 bg-white rounded-lg" onSubmit={handleLogin}>
+        <form className="max-w-96 mx-auto p-6 bg-white/40 shadow-2xl rounded-lg" onSubmit={handleLogin}>
           <div className="mb-8">
             <Link to="/"><img className="mx-auto" src={logo} alt="logo" /></Link>
             <p className="my-4 text-3xl font-semibold">Login to your account</p>
           </div>
           <div className="mb-5">
             <label
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
-              Your username
+              Your email
             </label>
             <input
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="username"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
+              placeholder="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               required
             />
           </div>

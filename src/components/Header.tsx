@@ -3,12 +3,18 @@ import { ClientInformation } from "../types"
 import { formatDate } from "../utils/formattedDate"
 import Loader from "./Loader"
 import { useQuery } from "@tanstack/react-query"
+import { getAuth } from "../utils/getAuth"
 
 export default function Header() {
   const { data: clientInfo, isSuccess: isSuccessClientInfo, isLoading: isLoadingClientInfo } = useQuery({
     queryKey: ['clientInfo'],
     queryFn: async () => {
-      const response = await fetch(import.meta.env.VITE_API_URL + '/client-info')
+      const response = await fetch(import.meta.env.VITE_API_URL + '/client-info', {
+        headers: {
+            'email': `${getAuth()}`,
+            'Content-Type': 'application/json'
+        }
+    })
 
       if (!response.ok) {
         throw new Error('Network response was not ok')

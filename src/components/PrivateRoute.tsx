@@ -2,9 +2,9 @@ import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 
 export default function PrivateRoute({ children }: { children: ReactNode }) {
-  const username = localStorage.getItem("username");
+  const email = localStorage.getItem("email");
 
-  if (!username) {
+  if (!email) {
     return <Navigate to="/" replace={true} />;
   }
 

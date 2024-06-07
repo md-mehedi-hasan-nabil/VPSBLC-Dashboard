@@ -3,12 +3,18 @@ import { useQuery } from "@tanstack/react-query"
 import { ClientInformation } from "../types"
 import { IoClose } from "react-icons/io5"
 import { FcDisclaimer, FcHighPriority, FcOk } from "react-icons/fc"
+import { getAuth } from "../utils/getAuth"
 
 export default function UsdtWallet() {
     const { data: clientInfo, isSuccess } = useQuery({
         queryKey: ['clientInfo'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/client-info')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/client-info', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

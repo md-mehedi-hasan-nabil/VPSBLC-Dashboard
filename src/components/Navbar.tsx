@@ -3,10 +3,10 @@ import unlock from "../assets/unlock.svg"
 import notification from "../assets/notification.svg"
 
 export default function Navbar() {
-    const username = localStorage.getItem("username")
+    const username = localStorage.getItem("email")
 
     function handleLogout() {
-        localStorage.removeItem("username")
+        localStorage.removeItem("email")
         window.location.reload()
     }
 

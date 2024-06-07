@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import { getAuth } from "../utils/getAuth";
 
 interface Trade {
     no: string;
@@ -12,7 +13,12 @@ export default function RecentTradeActivity() {
     const { data: recentTradeActivities, isSuccess: isSuccessRecentTradeActivities } = useQuery({
         queryKey: ['recentTradeActivities'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/recent-trades')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/recent-trades', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

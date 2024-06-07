@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useState } from "react"
 import { ClientInformation } from "../types";
 import RecentDisbursements from "./RecentDisbursements";
 import { FcElectronics, FcFinePrint } from "react-icons/fc";
+import { getAuth } from "../utils/getAuth";
 
 interface Item {
     id: number;
@@ -16,7 +17,12 @@ export default function Documentation() {
     const { data: clientInfo, isSuccess } = useQuery({
         queryKey: ['documentationInfo'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/client-info')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/client-info', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

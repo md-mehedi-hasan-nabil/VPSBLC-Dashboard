@@ -3,6 +3,7 @@ import { ApexOptions } from 'apexcharts';
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { FcCurrencyExchange } from 'react-icons/fc';
+import { getAuth } from '../utils/getAuth';
 
 export interface Disbursement {
     disbursement: string;
@@ -17,7 +18,14 @@ export default function ApexChart() {
     const { data: disbursementInfo, isSuccess: isSuccessDisbursementInfo } = useQuery({
         queryKey: ['disbursementInfo'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-info')
+            const email = getAuth()
+
+            const response = await fetch(import.meta.env.VITE_API_URL + '/disbursement-info', {
+                headers: {
+                    'email': `${email}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')
@@ -30,7 +38,12 @@ export default function ApexChart() {
     const { data: vpsblcInfo, isSuccess: isSuccessVpsblcInfo } = useQuery({
         queryKey: ['vpsblcInfo'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/vpsblc-info')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/vpsblc-info', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

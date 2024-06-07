@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { FcTodoList } from "react-icons/fc";
+import { getAuth } from "../utils/getAuth";
 
 interface RecentDisbursement {
     most_recent_disbursement: string;
@@ -13,7 +14,12 @@ export default function RecentDisbursements() {
     const { data: recentDisbursementsData, isSuccess } = useQuery({
         queryKey: ['recentDisbursements'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/recent-disbursements')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/recent-disbursements', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

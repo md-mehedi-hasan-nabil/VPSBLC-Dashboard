@@ -3,6 +3,7 @@ import gbpaud from "../assets/gbpaud.svg"
 import LineChart from "./LineChart"
 import Loader from "./Loader";
 import { useEffect, useState } from "react";
+import { getAuth } from "../utils/getAuth";
 
 interface IGrowthAnalytics {
     "Trade Direction": string;
@@ -21,7 +22,12 @@ export default function GrowthAnalyticsInformation() {
     const { data: analyticsInfo, isSuccess, isLoading } = useQuery({
         queryKey: ['analyticsInfo'],
         queryFn: async () => {
-            const response = await fetch(import.meta.env.VITE_API_URL + '/growth-analytics-info')
+            const response = await fetch(import.meta.env.VITE_API_URL + '/growth-analytics-info', {
+                headers: {
+                    'email': `${getAuth()}`,
+                    'Content-Type': 'application/json'
+                }
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')
