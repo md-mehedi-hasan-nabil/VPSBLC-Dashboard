@@ -150,15 +150,16 @@ export default function ApexChart() {
         },
         yaxis: {
             min: 0,
-            max: Math.max(...disbursementsPaid)+1000,
+            max: Math.max(...disbursementsPaid) + 1000,
             labels: {
                 formatter: (value: number) => {
-                    console.log(value)
                     if (value === 0) {
                         return "$" + value;
-                    } else if (value > 0 && value < 1000) {
+                    } 
+                    else if (value > 0 && value < 1000) {
                         return "$" + value;
-                    } else {
+                    } 
+                    else {
                         return "$" + ((value / 1000) * 2) + "K";
                     }
                 }

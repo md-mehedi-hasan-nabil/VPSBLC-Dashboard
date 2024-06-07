@@ -10,7 +10,6 @@ interface IDisbursementOverview {
     "Next Disbursement": string;
     "Next Disbursement Amount": string;
     "Earnings to Date": string;
-
     "Next Disbursement:": string;
     "Next Disbursement Amount:": string;
     "Earnings to Date:": string;
@@ -35,8 +34,7 @@ export default function Disbursement() {
                     'email': `${getAuth()}`,
                     'Content-Type': 'application/json'
                 }
-            }
-            )
+            })
 
             if (!response.ok) {
                 throw new Error('Network response was not ok')

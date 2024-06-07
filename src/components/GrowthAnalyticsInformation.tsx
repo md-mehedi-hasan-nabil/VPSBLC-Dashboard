@@ -90,7 +90,7 @@ export default function GrowthAnalyticsInformation() {
             </div>
             {
                 growthValue && 0 < growthValue ?
-                    <p className="text-[#7ED63F] text-xl font-bold mt-2">
+                    <p className="text-[#4CAF50] text-xl font-bold mt-2">
                         +{growthValue}%
                     </p> :
                     <p className="text-[#FF0000] text-xl font-bold mt-2">
