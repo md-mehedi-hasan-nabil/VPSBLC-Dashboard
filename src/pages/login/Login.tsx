@@ -11,7 +11,7 @@ export default function Login() {
 
   useEffect(() => {
     const user = localStorage.getItem("username")
-    
+
     if (user) {
       navigate("/dashboard")
     }
@@ -36,8 +36,10 @@ export default function Login() {
       .then(data => {
         if (data.success) {
           toast.success("Login successfull.")
-          navigate("/dashboard")
           localStorage.setItem("email", data?.username)
+          setEmail("")
+          setPassword("")
+          navigate("/dashboard")
         } else {
           toast.error("Please correct username and password.")
         }
@@ -65,6 +67,7 @@ export default function Login() {
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="email"
+              name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
@@ -80,6 +83,7 @@ export default function Login() {
               type="password"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="password"
+              name="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
