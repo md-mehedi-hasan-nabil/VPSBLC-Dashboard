@@ -28,7 +28,6 @@ export default function App() {
                     <Header />
                     <DashboardItems />
                     <GrowthAnalytics />
-                    {/* <ApexChart /> */}
                     <Disbursement />
                     <UsdtWallet />
                     <Documentation />
