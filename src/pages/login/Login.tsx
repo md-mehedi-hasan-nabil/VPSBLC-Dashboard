@@ -35,8 +35,9 @@ export default function Login() {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
+          console.log(data)
           toast.success("Login successfull.")
-          localStorage.setItem("email", data?.username)
+          localStorage.setItem("email", data?.email)
           setEmail("")
           setPassword("")
           navigate("/dashboard")
