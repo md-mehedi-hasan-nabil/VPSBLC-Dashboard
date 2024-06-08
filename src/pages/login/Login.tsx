@@ -53,7 +53,7 @@ export default function Login() {
 
   return (
     <section className="min-h-screen flex justify-center items-center background-image">
-      <div className="w-full">
+      <div className="w-full pt-20">
         <form className="max-w-96 mx-auto p-6 bg-white/40 shadow-2xl rounded-lg" onSubmit={handleLogin}>
           <div className="mb-8">
             <Link to="/"><img className="mx-auto" src={logo} alt="logo" /></Link>
