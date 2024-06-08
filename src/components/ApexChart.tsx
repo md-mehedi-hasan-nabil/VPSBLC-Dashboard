@@ -56,17 +56,18 @@ export default function ApexChart() {
     const [dataLineCharPercentagest, setDataLineChartPercentages] = useState<number[]>([]);
     const [disbursementsPaid, setDisbursementsPaid] = useState<number[]>([]);
 
-
     useEffect(() => {
         if (isSuccessDisbursementInfo && isSuccessVpsblcInfo) {
             const lineCharts: number[] = [];
             const disbursements_paid_list: number[] = [];
             const xCategoriesValues: string[] = [];
+            const disbursement_date_paid: string[] = [];
 
             disbursementInfo.forEach((item: Disbursement) => {
                 disbursements_paid_list.push(Number(item.disbursements_paid));
                 lineCharts.push(Number(item.line_chart?.replace("%", "")));
                 xCategoriesValues.push(item.disbursement);
+                disbursement_date_paid.push(item.date_paid)
             });
 
             const max = Math.max(...disbursements_paid_list)
@@ -81,11 +82,15 @@ export default function ApexChart() {
         }
     }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo]);
 
+    // console.log(disbursementsPaid) // [10000,10000,800,950,400,100,990,1000,300]
+    console.log(dataLineCharPercentagest)
+
     const chartOptions: ApexOptions = {
         series: [
             {
                 name: 'Disbursement',
-                type: 'column',
+                group: 'Earnings',
+                type: "column",
                 data: disbursementsPaid
             },
         ],
@@ -129,20 +134,22 @@ export default function ApexChart() {
             size: 1
         },
         tooltip: {
-            x: {
-                formatter: function (val) {
-                    return val.toString()
+            enabled: true,
+            custom: function ({ seriesIndex, dataPointIndex, w }) {
+                let content = '';
+
+                // Customize tooltip content based on series type
+                if (w.config.series[seriesIndex].type === 'column') {
+                    content = `
+                    <div class="p-4 text-center">
+                        <h3><b class="font-bold">Disbursement 1: </b>${disbursementInfo[dataPointIndex]["date_paid"]}</h3>
+                        <p class="mt-2"><b class="font-bold">Amount: </b> $${disbursementInfo[dataPointIndex]["disbursements_paid"]}</p>
+                    </div>`;
+                } else if (w.config.series[seriesIndex].type === 'line') {
+                    // content = `<div class="custom-tooltip">${dataLineCharPercentagest[dataPointIndex]}%</div>`;
                 }
-            },
-            y: {
-                formatter: function (val, { seriesIndex, dataPointIndex, w }) {
-                    if (w.config.series[seriesIndex].type === 'column') {
-                        return val.toString();
-                    } else if (w.config.series[seriesIndex].type === 'line') {
-                        return dataLineCharPercentagest[dataPointIndex] + "%";
-                    }
-                    return val.toString();
-                }
+
+                return content;
             }
         },
         xaxis: {
@@ -150,20 +157,20 @@ export default function ApexChart() {
         },
         yaxis: {
             min: 0,
-            max: Math.max(...disbursementsPaid) ,
+            max: Math.max(...disbursementsPaid) + 1000,
             labels: {
-                formatter: (value: number) => {
-                    if (value === 0) {
-                        return "$" + value.toString()[0];
-                    } 
-                    // else if (value > 0 && value < 1000) {
-                    //     return "";
-                    // } 
-                    else {
-                        return "$" + value.toString()[0] + "K";
+                formatter: (val) => {
+                    if (val === 0) {
+                        return "$0"
+                    } else {
+                        return "$" + (val / 1000) + 'K'
                     }
                 }
             }
+        },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'left'
         }
     };
 
