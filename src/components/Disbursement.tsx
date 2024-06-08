@@ -64,7 +64,7 @@ export default function Disbursement() {
                 {
                     id: 3,
                     title: "Earnings to Date",
-                    value: (disbursementOverview as IDisbursementOverview)["Earnings to Date"],
+                    value: "$ " +(disbursementOverview as IDisbursementOverview)["Earnings to Date"],
                     background: "#ebbf2c",
                     icon: bullish
                 },

@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png"
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ export default function Login() {
   }
 
   return (
-    <section className="h-screen flex justify-center items-center background-image">
+    <section className="min-h-screen flex justify-center items-center background-image">
       <div className="w-full">
         <form className="max-w-96 mx-auto p-6 bg-white/40 shadow-2xl rounded-lg" onSubmit={handleLogin}>
           <div className="mb-8">
@@ -98,6 +99,8 @@ export default function Login() {
             Login
           </button>
         </form>
+
+        <div className="px-8 w-10/12 mx-auto text-white"><Footer /></div>
       </div>
     </section>
   )

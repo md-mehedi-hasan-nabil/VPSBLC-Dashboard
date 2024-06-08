@@ -9,6 +9,7 @@ import UsdtWallet from "../../components/UsdtWallet";
 import { useEffect } from "react";
 import { queryClient } from "../../main";
 import GrowthAnalytics from "../../components/GrowthAnalytics";
+import Footer from "../../components/Footer";
 
 export default function App() {
     useEffect(() => {
@@ -31,6 +32,7 @@ export default function App() {
                     <Disbursement />
                     <UsdtWallet />
                     <Documentation />
+                    <Footer />
                 </div>
             </div>
         </>
