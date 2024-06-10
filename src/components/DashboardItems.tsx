@@ -1,9 +1,10 @@
-import vpsblc from "../assets/vpsblc.svg"
 import virtual from "../assets/virtual.svg"
 import trade from "../assets/trade.svg"
 import { useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 import { getAuth } from "../utils/getAuth"
+import vpsblcCompleted from "../assets/vpsblc-completed.svg"
+import vpsblcPending from "../assets/vpsblc-pending.svg"
 
 interface IVPSBLCInformation {
     "VPSBLC Purchase Price": string;
@@ -45,12 +46,20 @@ export default function DashboardItems() {
 
     useEffect(() => {
         if (isSuccessVpsblcInfo) {
+            // let icon;
+
+            // if ((vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Status"]?.includes("COMPLETED")) {
+            //     icon = vpsblcCompleted
+            // } else {
+            //     icon = vpsblcPending
+            // }
+
             const result: IItem[] = [
                 {
                     id: 1,
                     name: "VPSBLC PURCHASE STATUS",
                     title: (vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Status"],
-                    icon: vpsblc as string
+                    icon: vpsblcCompleted as string
                 },
                 {
                     id: 2,
@@ -88,7 +97,11 @@ export default function DashboardItems() {
                                 }
                             </div>
                             <div>
-                                <img className="w-20 h-20" src={item.icon} alt={item.name} />
+                                {
+                                    (item?.title?.includes("COMPLETED") || item.title?.includes("FUNDED") || item?.title === "ACTIVE") ? <img className="w-20 h-20" src={item.icon} alt={item.name} /> :
+                                        <img className="w-20 h-20" src={vpsblcPending} alt={item.name} />
+                                }
+
                             </div>
                         </div>
                     </div>

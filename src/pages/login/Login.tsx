@@ -55,8 +55,11 @@ export default function Login() {
       <div className="w-full pt-20">
         <form className="max-w-96 mx-auto p-6 bg-white/40 shadow-2xl rounded-lg" onSubmit={handleLogin}>
           <div className="mb-8">
-            <Link to="/"><img className="mx-auto" src={logo} alt="logo" /></Link>
-            <p className="my-4 text-3xl font-semibold">Login to your account</p>
+            <Link to="/">
+              <img className="mx-auto" src={logo} alt="logo" />
+            </Link>
+            <p className="mt-4 text-3xl font-semibold">Login to Your Account</p>
+            <p className="text-center text-sm mt-1">Welcome to your VPSBLC.io  Client Terminal</p>
           </div>
           <div className="mb-5">
             <label

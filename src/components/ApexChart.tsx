@@ -152,7 +152,7 @@ export default function ApexChart() {
                             <h3>
                                 <b class="font-bold">Date: </b>${disbursementInfo[dataPointIndex]["date_paid"]}
                             </h3>
-                            <p class="text-lg font-bold text-[#4caf50]"><span class="font-bold text-2xl mt-2">$${disbursementInfo[dataPointIndex]["disbursements_paid"]} USD</span> <br /> PAID</p>
+                            <p class="text-lg font-bold text-[#4caf50]"><span class="font-bold text-2xl mt-2">$${disbursementInfo[dataPointIndex]["disbursements_paid"]} USDT</span> <br /> PAID</p>
                         </div>
                     </div>`;
                 }

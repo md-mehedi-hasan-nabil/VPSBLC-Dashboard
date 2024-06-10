@@ -5,6 +5,7 @@ import moneyTransfer from "../assets/money-transfer.svg"
 import bullish from "../assets/bullish.svg"
 import ApexChart from "./ApexChart";
 import { getAuth } from "../utils/getAuth";
+import moment from "moment";
 
 interface IDisbursementOverview {
     "Next Disbursement": string;
@@ -64,7 +65,7 @@ export default function Disbursement() {
                 {
                     id: 3,
                     title: "Earnings to Date",
-                    value: "$ " +(disbursementOverview as IDisbursementOverview)["Earnings to Date"],
+                    value: "$ " + (disbursementOverview as IDisbursementOverview)["Earnings to Date"],
                     background: "#ebbf2c",
                     icon: bullish
                 },
@@ -80,6 +81,12 @@ export default function Disbursement() {
         return result
     };
 
+    function addComma(text: string) {
+        const tx = text.replace("$", "")?.trim()
+
+        return Number(tx)?.toLocaleString()
+    }
+
     return (
         <div id="disbursement" className="pt-10">
             <h2 className="text-3xl text-[#343C6A] font-semibold">
@@ -88,7 +95,7 @@ export default function Disbursement() {
             <ApexChart />
             <div className="grid grid-cols-12 md:gap-8 mt-6">
                 {
-                    disbursements && disbursements.map(item =>
+                    disbursements && disbursements.map((item, index) =>
                         <div style={{
                             background: item.background
                         }} key={item.id} className="col-span-12 md:col-span-4 rounded-2xl p-6 my-2 md:my-0 text-white">
@@ -96,7 +103,16 @@ export default function Disbursement() {
                                 <img src={item.icon} alt={item.title} />
                                 <h3 className="text-base font-semibold">{item.title}</h3>
                             </div>
-                            <h2 className="text-3xl font-bold mt-5">{removeQuotes(item.value)}</h2>
+                            {
+                                index == 0 && <h2 className="text-3xl font-bold mt-5">{moment(item.value).format('LL')}</h2>
+                            }
+                            {
+                                index == 1 && <h2 className="text-3xl font-bold mt-5">$ {addComma(removeQuotes((item.value)))} USDT</h2>
+                            }
+                            {
+                                index == 2 && <h2 className="text-3xl font-bold mt-5">$ {addComma(removeQuotes((item.value)))} USDT</h2>
+                            }
+
                         </div>
                     )
                 }
