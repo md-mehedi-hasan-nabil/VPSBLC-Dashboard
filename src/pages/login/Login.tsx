@@ -100,7 +100,7 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="px-8 w-10/12 mx-auto text-white"><Footer /></div>
+        <div className="px-8 w-10/12 mx-auto text-white mt-10"><Footer /></div>
       </div>
     </section>
   )

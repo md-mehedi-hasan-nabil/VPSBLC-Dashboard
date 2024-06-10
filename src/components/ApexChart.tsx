@@ -2,8 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { ApexOptions } from 'apexcharts';
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { FcCurrencyExchange } from 'react-icons/fc';
+import money from "../assets/money.svg"
 import { getAuth } from '../utils/getAuth';
+import analysisIcon from "../assets/analysis.svg"
 
 export interface Disbursement {
     disbursement: string;
@@ -138,15 +139,22 @@ export default function ApexChart() {
             custom: function ({ seriesIndex, dataPointIndex, w }) {
                 let content = '';
 
-                // Customize tooltip content based on series type
                 if (w.config.series[seriesIndex].type === 'column') {
                     content = `
-                    <div class="p-4 text-center">
-                        <h3><b class="font-bold">Disbursement 1: </b>${disbursementInfo[dataPointIndex]["date_paid"]}</h3>
-                        <p class="mt-2"><b class="font-bold">Amount: </b> $${disbursementInfo[dataPointIndex]["disbursements_paid"]}</p>
+                    <div class="text-center">
+                    <h2 class="bg-gradient text-white p-1 font-extrabold text-xs uppercase">Disbursement ${dataPointIndex + 1}</h2>
+                    <div class="flex justify-center items-center">
+                        <div class="bg-[#daf2ce] p-3 rounded-full mt-3">
+                            <img class="w-8" src="${money}" alt="money" />
+                        </div>
+                    </div>
+                        <div class="p-3">
+                            <h3>
+                                <b class="font-bold">Date: </b>${disbursementInfo[dataPointIndex]["date_paid"]}
+                            </h3>
+                            <p class="text-lg font-bold text-[#4caf50]"><span class="font-bold text-2xl mt-2">$${disbursementInfo[dataPointIndex]["disbursements_paid"]} USD</span> <br /> PAID</p>
+                        </div>
                     </div>`;
-                } else if (w.config.series[seriesIndex].type === 'line') {
-                    // content = `<div class="custom-tooltip">${dataLineCharPercentagest[dataPointIndex]}%</div>`;
                 }
 
                 return content;
@@ -179,7 +187,8 @@ export default function ApexChart() {
             <div className="overflow-hidden">
                 <div className='bg-white p-4 rounded-2xl'>
                     <div className='flex items-center gap-4'>
-                        <FcCurrencyExchange className='text-2xl md:text-5xl' />
+                        <img className='w-12 h-12' src={analysisIcon} alt="analysis" />
+                        {/* <FcCurrencyExchange className='text-2xl md:text-5xl' /> */}
                         <p className='text-2xl'>Program Performance</p>
                     </div>
                     <ReactApexChart options={chartOptions} series={chartOptions.series} type="line" height={350} />

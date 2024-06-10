@@ -60,7 +60,7 @@ export default function Documentation() {
     }, [isSuccess, clientInfo])
 
     return (
-        <div id="documentation" className="mt-8">
+        <div id="documentation" className="mt-8 mb-[300px] ">
             <h2 className="text-3xl text-[#343C6A] font-semibold">
                 DOCUMENTATION
             </h2>

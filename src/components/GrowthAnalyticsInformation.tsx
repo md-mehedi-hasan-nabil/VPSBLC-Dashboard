@@ -54,16 +54,6 @@ export default function GrowthAnalyticsInformation() {
                 setColor("#4CAF50")
                 setBgArrow("recent-trade-up-bg-image")
             }
-
-            // if ((0 < Number(growth))) {
-            //     setData([31, 40, 28, 51, 42, 90, 70])
-            //     setColor("#4CAF50")
-            //     setBgArrow("recent-trade-up-bg-image")
-            // } else {
-            //     setData([10, 12, 6, 17, 10, 15, 8])
-            //     setColor("#FF0000")
-            //     setBgArrow("recent-trade-down-bg-image")
-            // }
         }
     }, [isSuccess, analyticsInfo, tradeDirection])
 
@@ -73,7 +63,7 @@ export default function GrowthAnalyticsInformation() {
         content = <Loader />
     } else if (isSuccess && analyticsInfo) {
         content = <>
-            <h3 className="text-xl font-medium text-primary">Most Recent Trade</h3>
+            <h3 className="text-xl font-semibold text-primary">Most Recent Trade</h3>
             {
                 tradeDirection === "SHORT" ? <h2 className="text-[22px] text-[#FF0000] my-2 font-bold">
                     {tradeDirection} POSITION ON:
@@ -82,8 +72,8 @@ export default function GrowthAnalyticsInformation() {
                 </h2>
             }
 
-            <div className="flex gap-3">
-                <img src={gbpaud} alt="gbpaud" />
+            <div className="flex items-center gap-3">
+                <img className="h-10" src={gbpaud} alt="gbpaud" />
                 <p className="text-[42px] font-bold text-primary">
                     {(analyticsInfo as IGrowthAnalytics)["Asset Name"]}
                 </p>

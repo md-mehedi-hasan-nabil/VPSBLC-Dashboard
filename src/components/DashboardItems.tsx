@@ -75,7 +75,7 @@ export default function DashboardItems() {
         <div className="grid grid-cols-12 gap-4 md:gap-8 mt-8">
             {
                 dashboardItems && dashboardItems.map(item =>
-                    <div key={item.id} className="col-span-12 md:col-span-4 bg-white rounded-2xl">
+                    <div key={item.id} className={`col-span-12 md:col-span-4 rounded-2xl ${(item?.title?.includes("COMPLETED") || item.title?.includes("FUNDED") || item?.title === "ACTIVE") ? "bg-[#F1F9F1]" : "bg-[#FCF6E2]"}`}>
                         <h3 className="text-base font-semibold text-white bg-gradient px-4 py-2 rounded-t-2xl overflow-hidden">{item.name}</h3>
                         <div className="flex md:flex-col lg:flex-row justify-between items-center p-4">
                             <div>

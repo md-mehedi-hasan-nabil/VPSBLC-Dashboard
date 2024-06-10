@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { getAuth } from "../utils/getAuth";
+import upArrow from "../assets/table-arrow-up.svg";
+import downArrow from "../assets/table-arrow-down.svg";
 
 interface Trade {
     no: string;
@@ -42,7 +44,10 @@ export default function RecentTradeActivity() {
                 <td className="py-3">
                     {item.asset}
                 </td>
-                <td className="py-3 px-3">
+                <td className="py-3 px-3 flex gap-1">
+                    {item.position === "LONG" ? <img className="w-3" src={upArrow} alt="LONG" /> :
+                        <img className="w-3" src={downArrow} alt="SHORT" />
+                    }
                     {item.position}
                 </td>
                 <td className="py-3">

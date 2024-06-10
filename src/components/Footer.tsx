@@ -1,10 +1,11 @@
 export default function Footer() {
     return (
-        <footer className="mt-8 text-center">
-            <p>
-                <b className="font-bold">DISCLAIMER:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla porttitor massa id neque aliquam vestibulum morbi. Vitae et leo duis ut diam quam nulla porttitor massa. Pretium aenean pharetra magna ac. Sagittis nisl rhoncus mattis rhoncus urna. Arcu non sodales neque sodales. Sodales ut etiam sit amet nisl purus in. Iaculis urna id volutpat lacus laoreet non. Commodo viverra maecenas accumsan lacus vel. Aenean et tortor at risus viverra adipiscing. Sagittis id consectetur purus ut faucibus pulvinar elementum. Tempor orci dapibus ultrices in iaculis nunc. Sed vulputate odio ut enim blandit volutpat maecenas volutpat. Commodo ullamcorper a lacus vestibulum sed arcu. Orci ac auctor augue mauris augue neque gravida in. Faucibus in ornare quam viverra orci. Bibendum neque egestas congue quisque egestas diam. Sagittis eu volutpat odio facilisis mauris sit amet massa vitae. Est placerat in egestas erat imperdiet sed euismod. Scelerisque purus semper eget duis at tellus.
+        <footer className="text-center">
+            <p className="text-[8px]">
+                <b className="font-bold">DISCLAIMER: </b> 
+                The information presented within this Client Terminal is furnished for educational and informational purposes only and does not constitute legally binding documentation or an offer to sell or solicitation of an offer to buy any securities, financial products, or instruments. Due to the inherently volatile nature of financial markets and the dynamic conditions affecting them, all balances, figures, performance metrics, and other data displayed herein are subject to change without notice and may not accurately reflect real-time values or the actual financial status of your account. Clients expressly acknowledge and agree that the only documents possessing legal enforceability and validity are the formal contracts executed between the Client and Axiom Strategic Capital, LLC. All other representations, whether verbal, written, or electronic—including the content of this Client Terminal—shall be considered subordinate and non-binding. By accessing this terminal, the Client affirms their understanding and acceptance of these conditions, thereby waiving any claims to the contrary based on the informational content provided herein.
             </p>
-            <p className="mt-5">Copyright 2024. | Axiom Strategic Capital, LLC | All Rights Reserved.</p>
+            <p className="mt-5 text-sm font-bold">Copyright 2024. | Axiom Strategic Capital, LLC | All Rights Reserved.</p>
         </footer>
     )
 }
