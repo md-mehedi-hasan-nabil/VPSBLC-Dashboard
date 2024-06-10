@@ -1,8 +1,10 @@
 import avatar from "../assets/user.png"
 import unlock from "../assets/unlock.svg"
 import notification from "../assets/notification.svg"
+import { useState } from "react"
 
 export default function Navbar() {
+    const [openDropdown, setOpenDropdown] = useState<boolean>(false)
     const username = localStorage.getItem("email")
 
     function handleLogout() {
@@ -48,7 +50,7 @@ export default function Navbar() {
                         </button>
                         <a href="/dashboard" className="flex items-center gap-2 ms-2 md:me-24 text-white">
                             <img className="w-10 h-10" src={unlock} alt="unlock" />
-                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
+                            <span className="self-center text-lg font-semibold md:text-2xl whitespace-nowrap">
                                 VPSBLC.io Client Terminal
                             </span>
                         </a>
@@ -62,8 +64,7 @@ export default function Navbar() {
                                 <button
                                     type="button"
                                     className="flex text-sm bg-stone-800 rounded-full focus:ring-4 focus:ring-stone-300 dark:focus:ring-stone-600"
-                                    aria-expanded="false"
-                                    data-dropdown-toggle="dropdown-user"
+                                    onClick={() => setOpenDropdown(prev => !prev)}
                                 >
                                     <span className="sr-only">Open user menu</span>
                                     <img
@@ -75,8 +76,7 @@ export default function Navbar() {
                             </div>
 
                             <div
-                                className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-stone-100 rounded shadow dark:bg-stone-700 dark:divide-stone-600"
-                                id="dropdown-user"
+                                className={`${openDropdown ? "" : "hidden"} z-50 absolute top-14 right-1  my-4 text-base list-none bg-white divide-y divide-stone-100 rounded shadow`}
                             >
                                 <div className="px-4 py-3" role="none">
                                     <p
