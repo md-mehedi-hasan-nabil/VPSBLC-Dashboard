@@ -3,7 +3,6 @@ import logo from "../../assets/logo.png"
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom";
-import Footer from "../../components/Footer";
 
 export default function Login() {
   const navigate = useNavigate();
