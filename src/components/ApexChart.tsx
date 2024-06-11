@@ -5,6 +5,7 @@ import ReactApexChart from 'react-apexcharts';
 import money from "../assets/money.svg"
 import { getAuth } from '../utils/getAuth';
 import analysisIcon from "../assets/analysis.svg"
+import { addComma } from '../utils/addComma';
 
 export interface Disbursement {
     disbursement: string;
@@ -54,19 +55,19 @@ export default function ApexChart() {
         },
     })
 
-    const [dataLineCharPercentagest, setDataLineChartPercentages] = useState<number[]>([]);
+    // const [dataLineCharPercentagest, setDataLineChartPercentages] = useState<number[]>([]);
     const [disbursementsPaid, setDisbursementsPaid] = useState<number[]>([]);
 
     useEffect(() => {
         if (isSuccessDisbursementInfo && isSuccessVpsblcInfo) {
-            const lineCharts: number[] = [];
+            // const lineCharts: number[] = [];
             const disbursements_paid_list: number[] = [];
             const xCategoriesValues: string[] = [];
             const disbursement_date_paid: string[] = [];
 
             disbursementInfo.forEach((item: Disbursement) => {
                 disbursements_paid_list.push(Number(item.disbursements_paid));
-                lineCharts.push(Number(item.line_chart?.replace("%", "")));
+                // lineCharts.push(Number(item.line_chart?.replace("%", "")));
                 xCategoriesValues.push(item.disbursement);
                 disbursement_date_paid.push(item.date_paid)
             });
@@ -79,12 +80,12 @@ export default function ApexChart() {
             })
 
             setDisbursementsPaid(disbursements_paid_list);
-            setDataLineChartPercentages(lineCharts)
+            // setDataLineChartPercentages(lineCharts)
         }
     }, [isSuccessDisbursementInfo, isSuccessVpsblcInfo, disbursementInfo, vpsblcInfo]);
 
     // console.log(disbursementsPaid) // [10000,10000,800,950,400,100,990,1000,300]
-    console.log(dataLineCharPercentagest)
+    // console.log(dataLineCharPercentagest)
 
     const chartOptions: ApexOptions = {
         series: [
@@ -152,7 +153,7 @@ export default function ApexChart() {
                             <h3>
                                 <b class="font-bold">Date: </b>${disbursementInfo[dataPointIndex]["date_paid"]}
                             </h3>
-                            <p class="text-lg font-bold text-[#4caf50]"><span class="font-bold text-2xl mt-2">$${disbursementInfo[dataPointIndex]["disbursements_paid"]} USDT</span> <br /> PAID</p>
+                            <p class="text-lg font-bold text-[#4caf50]"><span class="font-bold text-2xl mt-2">$${addComma(disbursementInfo[dataPointIndex]["disbursements_paid"])} USDT</span> <br /> PAID</p>
                         </div>
                     </div>`;
                 }
@@ -171,7 +172,7 @@ export default function ApexChart() {
                     if (val === 0) {
                         return "$0"
                     } else {
-                        return "$" + (val / 1000) + 'K'
+                        return "$" + (val / 1000)?.toFixed() + 'K'
                     }
                 }
             }

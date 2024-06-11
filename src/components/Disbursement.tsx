@@ -6,6 +6,7 @@ import bullish from "../assets/bullish.svg"
 import ApexChart from "./ApexChart";
 import { getAuth } from "../utils/getAuth";
 import moment from "moment";
+import { addComma } from "../utils/addComma";
 
 interface IDisbursementOverview {
     "Next Disbursement": string;
@@ -80,12 +81,6 @@ export default function Disbursement() {
         const result = value?.replace("\"", '')?.replace(",", "");
         return result
     };
-
-    function addComma(text: string) {
-        const tx = text.replace("$", "")?.trim()
-
-        return Number(tx)?.toLocaleString()
-    }
 
     return (
         <div id="disbursement" className="pt-10">

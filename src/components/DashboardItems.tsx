@@ -46,13 +46,6 @@ export default function DashboardItems() {
 
     useEffect(() => {
         if (isSuccessVpsblcInfo) {
-            // let icon;
-
-            // if ((vpsblcInfo as IVPSBLCInformation)["VPSBLC Purchase Status"]?.includes("COMPLETED")) {
-            //     icon = vpsblcCompleted
-            // } else {
-            //     icon = vpsblcPending
-            // }
 
             const result: IItem[] = [
                 {
