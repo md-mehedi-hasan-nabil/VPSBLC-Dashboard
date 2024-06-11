@@ -120,7 +120,7 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="px-8 w-10/12 mx-auto text-white mt-10">
+        <div className="px-8 w-10/12 mx-auto text-white mt-20">
           <footer className="text-center">
             <p className="text-[8px] italic">
               <b className="font-bold">TOS: </b>
